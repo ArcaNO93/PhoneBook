@@ -1,4 +1,4 @@
-package com.example.phonebook.viewModels;
+package com.example.phonebook.ViewModels;
 
 import android.app.Application;
 import android.content.Context;
@@ -9,12 +9,12 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.phonebook.R;
-import com.example.phonebook.repos.UsersShPRepo;
+import com.example.phonebook.repos.UsersRepoShPref;
 
 public class SignUpViewModel extends AndroidViewModel {
     private String mLogin;
     private String mPassword;
-    private UsersShPRepo mRepo;
+    private UsersRepoShPref mRepo;
     private Context mContext;
     private MutableLiveData<Boolean> isFinished = new MutableLiveData<>();
 
@@ -23,7 +23,7 @@ public class SignUpViewModel extends AndroidViewModel {
         mLogin = "";
         mPassword = "";
         mContext = _application.getApplicationContext();
-        mRepo = new UsersShPRepo(_application);
+        mRepo = new UsersRepoShPref(_application);
     }
 
     public MutableLiveData<Boolean> getIsFinished() {

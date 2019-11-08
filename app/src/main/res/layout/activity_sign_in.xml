@@ -7,7 +7,7 @@
     <data>
         <variable
             name="user"
-            type="com.example.phonebook.viewModels.SignInViewModel" />
+            type="com.example.phonebook.ViewModels.SignInViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

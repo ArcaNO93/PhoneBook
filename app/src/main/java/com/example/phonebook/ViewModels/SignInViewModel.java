@@ -1,4 +1,4 @@
-package com.example.phonebook.viewModels;
+package com.example.phonebook.ViewModels;
 
 import android.app.Application;
 import android.content.Context;
@@ -9,14 +9,14 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.phonebook.R;
-import com.example.phonebook.repos.UsersShPRepo;
+import com.example.phonebook.repos.UsersRepoShPref;
 
 public class SignInViewModel extends AndroidViewModel {
 
     private String mLogin;
     private String mPassword;
     private Context mContext;
-    private UsersShPRepo mRepo;
+    private UsersRepoShPref mRepo;
     private MutableLiveData<Boolean> isLogged = new MutableLiveData<>();
     private MutableLiveData<Boolean> toSignUp = new MutableLiveData<>(false);
 
@@ -25,7 +25,7 @@ public class SignInViewModel extends AndroidViewModel {
         mLogin = "";
         mPassword = "";
         mContext = _application.getApplicationContext();
-        mRepo = new UsersShPRepo(_application);
+        mRepo = new UsersRepoShPref(_application);
     }
 
     public MutableLiveData<Boolean> getIsLogged() {
@@ -62,6 +62,7 @@ public class SignInViewModel extends AndroidViewModel {
         } else if (!(mRepo.verifyUser(mLogin, mPassword))) {
             showToast(mContext, mContext.getString(R.string.error_wrong_password));
         } else {
+            mRepo.setCurrentUser(mLogin);
             mRepo.setSignedUp(true);
             isLogged.postValue(true);
         }
@@ -77,8 +78,7 @@ public class SignInViewModel extends AndroidViewModel {
     }
 
     public void init() {
-        String res = (String) mRepo.getAllUsers().get("Signed up");
-        if (res.equals("true"))
+        if (String.valueOf(mRepo.getAllUsers().get("Signed up")).equals("true"))
             isLogged.postValue(true);
     }
 }

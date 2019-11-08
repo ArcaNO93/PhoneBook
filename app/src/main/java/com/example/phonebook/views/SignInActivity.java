@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProviders;
 import com.example.phonebook.R;
 import com.example.phonebook.databinding.ActivitySignInBinding;
 import com.example.phonebook.othersToBeSort.MainActivity;
-import com.example.phonebook.viewModels.SignInViewModel;
+import com.example.phonebook.ViewModels.SignInViewModel;
 
 public class SignInActivity extends AppCompatActivity {
 
@@ -37,3 +37,4 @@ public class SignInActivity extends AppCompatActivity {
         });
     }
 }
+

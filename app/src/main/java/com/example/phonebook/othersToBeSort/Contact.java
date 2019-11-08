@@ -5,6 +5,8 @@ import java.util.HashMap;
 
 public class Contact implements Serializable {
 
+    private static int count = 0;
+    private int ID;
     private HashMap<String, String> attributes = new HashMap<>();
 
     Contact() {
@@ -12,6 +14,11 @@ public class Contact implements Serializable {
         attributes.put("Phone", "");
         attributes.put("Email", "");
         attributes.put("Address", "");
+        ID = count++;
+    }
+
+    int getID() {
+        return ID;
     }
 
     String getName() {
