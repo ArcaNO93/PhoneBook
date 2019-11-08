@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".othersToBeSort.MainActivity">
+
+    <item
+        android:id="@+id/menuActionSignOut"
+        android:orderInCategory="1"
+        android:title="@string/menu_item_sign_out_text" />
+
+</menu>

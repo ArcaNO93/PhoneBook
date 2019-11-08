@@ -1,0 +1,51 @@
+<resources>
+    <string name="app_name">PhoneBook</string>
+
+    <string name="main_activity_toolbar_text">Phone Book</string>
+
+    <string name="create_new_contact_toolbar_text">Create New Contact</string>
+
+    <string name="add_contact_form_name">NAME:</string>
+    <string name="add_contact_form_phone">PHONE:</string>
+    <string name="add_contact_form_email">E-MAIL:</string>
+    <string name="add_contact_form_address">ADDRESS: </string>
+
+    <string name="contact_name_hint">Enter name</string>
+    <string name="contact_phone_hint">Enter phone</string>
+    <string name="contact_email_hint">Enter email</string>
+    <string name="contact_address_hint">Enter address</string>
+
+    <string name="contact_name">Contact Name</string>
+    <string name="contact_phone">Contact Phone</string>
+    <string name="contact_email">Contact E-mail</string>
+    <string name="contact_address">Contact Address</string>
+
+    <string name="delete_confirmation_text">Confirm deletion</string>
+
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="login_activity_welcome_text">Welcome to Phone Book!\nPlease sign in.</string>
+    <string name="login_form_login_text">LOGIN:</string>
+    <string name="login_form_password_text">PASSWORD:</string>
+    <string name="login_button_text">SIGN IN</string>
+    <string name="sign_up_button_text">Do not have an account? Sign up</string>
+
+    <string name="title_activity_create_user">SignUpActivity</string>
+    <string name="create_user_activity_welcome_text">Enter unique\nLOGIN and PASSWORD:</string>
+    <string name="create_user_form_login_text">LOGIN:</string>
+    <string name="create_user_form_password_text">PASSWORD:</string>
+    <string name="create_user_button_text">SIGN UP</string>
+
+    <string name="error_no_name">Contact is empty</string>
+    <string name="error_login_exists">Login exists</string>
+    <string name="error_empty_login">Login must not be empty</string>
+    <string name="error_empty_password">Password must not be empty</string>
+    <string name="error_account_does_not_exist">Account does not exist</string>
+    <string name="error_wrong_password">Wrong password</string>
+
+    <string name="user_creation_success">User created successfully</string>
+    <string name="menu_item_sign_out_text">Sign out</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="confirm_deletion_text">Confirm deletion</string>
+</resources>

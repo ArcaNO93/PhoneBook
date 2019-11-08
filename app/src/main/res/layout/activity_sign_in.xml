@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".views.SignInActivity">
+
+    <data>
+        <variable
+            name="user"
+            type="com.example.phonebook.viewModels.SignInViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary">
+
+        <LinearLayout
+            android:id="@+id/loginForm"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.6">
+
+            <TextView
+                android:id="@+id/loginFormLoginText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/login_form_login_text"
+                android:textColor="@android:color/background_light" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:textColor="@android:color/background_light"
+                android:textColorHighlight="@android:color/white"
+                android:textColorLink="@android:color/background_light"
+                android:textCursorDrawable="@drawable/edit_text_cursor"
+                android:text="@={user.login}"
+                app:backgroundTint="@android:color/white"/>
+
+            <TextView
+                android:id="@+id/loginFormPasswordText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="@string/login_form_password_text"
+                android:textColor="@android:color/background_light" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPassword"
+                android:textColor="@android:color/background_light"
+                android:textColorHighlight="@android:color/white"
+                android:textColorLink="@android:color/white"
+                android:textCursorDrawable="@drawable/edit_text_cursor"
+                android:text="@={user.password}"
+                app:backgroundTint="@android:color/white"/>
+
+            <Button style="@style/AppTheme.RoundedCornerMaterialButton"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="0dp"
+                android:text="@string/login_button_text"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:onClick="@{() -> user.signIn()}"/>
+
+        </LinearLayout>
+
+        <Button
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sign_up_button_text"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/loginForm"
+            app:layout_constraintVertical_bias="0.2"
+            android:onClick="@{()-> user.toSignUp()}"/>
+
+        <ImageView
+            android:id="@+id/signInImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/loginForm"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/phonebook_main" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="250dp"
+    android:layout_height="100dp"
+    android:background="@drawable/rounded_shape"
+    tools:context=".othersToBeSort.ConfirmDeletion">
+
+    <TableLayout
+        android:id="@+id/confirmDeletionAlertDialog"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/rounded_shape_with_border">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/confirmDeletionText"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="@string/confirm_deletion_text"
+                android:textColor="#ffffff"
+                android:textSize="18sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/buttonCancelDeletion"
+                style="@style/AppTheme.RoundedCornerMaterialButton"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/rounded_shape_bottom_left"
+                android:text="@android:string/cancel" />
+
+            <Button
+                android:id="@+id/buttonConfirmDeletion"
+                style="@style/AppTheme.RoundedCornerMaterialButton"
+                android:layout_width="118dp"
+                android:layout_height="50dp"
+                android:background="@drawable/rounded_shape_bottom_rightt"
+                android:text="@android:string/ok" />
+        </TableRow>
+    </TableLayout>
+</FrameLayout>

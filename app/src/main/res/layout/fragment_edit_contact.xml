@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/contactEdit"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context=".othersToBeSort.CreateContact">
+
+    <TableLayout
+        android:id="@+id/contactEditPanel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.25">
+
+        <TableRow
+            android:id="@+id/contactEditName"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="20dp">
+
+            <TextView
+                android:id="@+id/contactEditNameText"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/add_contact_form_name"
+                android:textColor="#000000" />
+
+            <EditText
+                android:id="@+id/contactEditNameEnterBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:importantForAutofill="no"
+                android:inputType="textPersonName" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/contactEditPhone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="20dp">
+
+            <TextView
+                android:id="@+id/contactEditPhoneText"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/add_contact_form_phone"
+                android:textColor="#000000" />
+
+            <EditText
+                android:id="@+id/contactEditPhoneEnterBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:importantForAutofill="no"
+                android:inputType="phone" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/contactEditEmail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="20dp">
+
+            <TextView
+                android:id="@+id/contactEditEmailText"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/add_contact_form_email"
+                android:textColor="#000000" />
+
+            <EditText
+                android:id="@+id/contactEditEmailEnterBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:importantForAutofill="no"
+                android:inputType="textEmailAddress" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/contactEditAddress"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/contactEditAddressText"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/add_contact_form_address"
+                android:textColor="#000000" />
+
+            <EditText
+                android:id="@+id/contactEditAddressEnterBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:importantForAutofill="no"
+                android:inputType="text" />
+        </TableRow>
+    </TableLayout>
+
+</FrameLayout>
