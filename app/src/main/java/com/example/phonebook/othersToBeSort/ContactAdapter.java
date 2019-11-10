@@ -1,6 +1,6 @@
 package com.example.phonebook.othersToBeSort;
 
-import android.app.Activity;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +14,7 @@ import java.util.Objects;
 
 public class ContactAdapter extends ArrayAdapter<Contact> {
 
-    ContactAdapter(Activity context, ArrayList<Contact> contact) {
+    public ContactAdapter(Context context, ArrayList<Contact> contact) {
         super(context, 0, contact);
     }
 
@@ -29,8 +29,8 @@ public class ContactAdapter extends ArrayAdapter<Contact> {
         TextView contactName = convertView.findViewById(R.id.contactListName);
         TextView contactPhone = convertView.findViewById(R.id.contactListPhone);
 
-        contactName.setText(Objects.requireNonNull(contact).getName());
-        contactPhone.setText(Objects.requireNonNull(contact).getPhone());
+        contactName.setText(Objects.requireNonNull(contact).getContactName());
+        contactPhone.setText(Objects.requireNonNull(contact).getContactPhone());
 
         return convertView;
     }

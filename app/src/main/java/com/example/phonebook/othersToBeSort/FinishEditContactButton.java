@@ -32,10 +32,10 @@ public class FinishEditContactButton extends Fragment {
             }
             else {
                 assert contact != null;
-                contact.setName(fragment.getContactName());
-                contact.setPhone(fragment.getContactPhone());
-                contact.setEmail(fragment.getContactEmail());
-                contact.setAddress(fragment.getContactAddress());
+                contact.setContactName(fragment.getContactName());
+                contact.setContactPhone(fragment.getContactPhone());
+                contact.setContactEmail(fragment.getContactEmail());
+                contact.setContactAddress(fragment.getContactAddress());
                 getActivity().getIntent().putExtra("ITEM_POSITION", getActivity().getIntent().getIntExtra("ITEM_POSITION",0));
                 getActivity().getIntent().putExtra("ITEM", contact);
                 getActivity().setResult(MainActivity.RESULT_EDIT, getActivity().getIntent());

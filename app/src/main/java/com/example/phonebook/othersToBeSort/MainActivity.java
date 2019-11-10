@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         mUsers = getSharedPreferences("Users", Context.MODE_PRIVATE);
         currentUser = mUsers.getString("currentUser", "");
         mPhoneBook.setAdapter(contactAddAdapter);
-        mUserContactList = getSharedPreferences("usersContactLists", Context.MODE_PRIVATE);
+        mUserContactList = getSharedPreferences("userContactLists", Context.MODE_PRIVATE);
         progressBar.show(getSupportFragmentManager(), "progressBar");
 
         Observable.timer(2000, TimeUnit.MILLISECONDS)

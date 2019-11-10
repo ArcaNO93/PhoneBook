@@ -5,44 +5,64 @@ import java.util.HashMap;
 
 public class Contact implements Serializable {
 
+    private static int count = 0;
+    private int ID;
+    private String contactName = "";
+    private String contactPhone = "";
+    private String contactEmail = "";
+    private String contactAddress = "";
+
     private HashMap<String, String> attributes = new HashMap<>();
 
-    Contact() {
+    public Contact() {
         attributes.put("Name", "");
         attributes.put("Phone", "");
         attributes.put("Email", "");
         attributes.put("Address", "");
+        ID = count++;
     }
 
-    String getName() {
-        return attributes.get("Name");
+    public int getID() {
+        return ID;
     }
 
-    String getPhone() {
-        return attributes.get("Phone");
+    public String getContactName() {
+        contactName = attributes.get("Name");
+        return contactName;
     }
 
-    String getEmail() {
-        return attributes.get("Email");
+    public String getContactPhone() {
+        contactPhone = attributes.get("Phone");
+        return contactPhone;
     }
 
-    String getAddress() {
-        return attributes.get("Address");
+    public String getContactEmail() {
+        contactEmail = attributes.get("Email");
+        return contactEmail;
     }
 
-    void setName(String _name) {
+    public String getContactAddress() {
+        contactAddress = attributes.get("Address");
+        return contactAddress;
+    }
+
+    public void setContactName(String _name) {
+        contactName = _name;
         attributes.put("Name", _name);
     }
 
-    void setPhone(String _phone) {
+    public void setContactPhone(String _phone) {
+        contactPhone = _phone;
         attributes.put("Phone", _phone);
     }
 
-    void setEmail(String _email) {
+    public void setContactEmail(String _email) {
+        contactEmail = _email;
         attributes.put("Email", _email);
     }
 
-    void setAddress(String _address) {
+    public void setContactAddress(String _address) {
+        contactAddress = _address;
         attributes.put("Address", _address);
     }
 

@@ -29,10 +29,10 @@ public class EditContact extends Fragment {
 
         Contact contact = (Contact) getActivity().getIntent().getSerializableExtra("ITEM");
 
-        mContactName.setText(contact.getName());
-        mContactPhone.setText(contact.getPhone());
-        mContactEmail.setText(contact.getEmail());
-        mContactAddress.setText(contact.getAddress());
+        mContactName.setText(contact.getContactName());
+        mContactPhone.setText(contact.getContactPhone());
+        mContactEmail.setText(contact.getContactEmail());
+        mContactAddress.setText(contact.getContactAddress());
 
         return view;
     }

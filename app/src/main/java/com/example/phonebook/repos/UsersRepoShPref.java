@@ -9,14 +9,14 @@ import androidx.annotation.NonNull;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
-public class UsersShPRepo implements UsersRepo {
+public class UsersRepoShPref implements UsersRepo {
 
     private static final String NO_USER_ERROR = "Can't find user";
     private static final String USER_EXISTS_ERROR = "User already exists";
 
     private SharedPreferences mUsers;
 
-    public UsersShPRepo(@NonNull Application application){
+    public UsersRepoShPref(@NonNull Application application){
         Context context = application.getApplicationContext();
         mUsers = context.getSharedPreferences("Users", Context.MODE_PRIVATE);
     }
@@ -53,6 +53,11 @@ public class UsersShPRepo implements UsersRepo {
     @Override
     public boolean verifyUser(String _user, String _userPassword) {
         return mUsers.getString(_user, "").equals(_userPassword);
+    }
+
+    @Override
+    public void setCurrentUser(String _currentUser) {
+        mUsers.edit().putString("Current user", _currentUser).apply();
     }
 
     @Override
