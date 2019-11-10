@@ -67,10 +67,10 @@ public class ContactActivity extends AppCompatActivity {
                 mErrorNoName.show();
             }
             else {
-                contact.setName(fragment.getContactName());
-                contact.setPhone(fragment.getContactPhone());
-                contact.setEmail(fragment.getContactEmail());
-                contact.setAddress(fragment.getContactAddress());
+                contact.setContactName(fragment.getContactName());
+                contact.setContactPhone(fragment.getContactPhone());
+                contact.setContactEmail(fragment.getContactEmail());
+                contact.setContactAddress(fragment.getContactAddress());
                 getIntent().putExtra("ITEM", contact);
                 setResult(MainActivity.RESULT_CREATE, getIntent());
                 finish();

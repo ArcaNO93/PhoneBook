@@ -6,8 +6,8 @@ import java.util.ArrayList;
 
 public interface ContactsRepo {
     void addContact(Contact _newContact);
-    void deleteContact(String _contactName);
-    Contact getContact(String _contactName);
-    void updateContact(String _contactName);
+    void deleteContact(int _contactPosition);
+    Contact getContact(int _contactPosition);
     ArrayList<Contact> getAllContacts();
+    void updateContact(int _contactPosition, String _newName, String _newPone, String _newEmail, String _newAddress);
 }

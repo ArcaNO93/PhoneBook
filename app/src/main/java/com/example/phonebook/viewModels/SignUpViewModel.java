@@ -1,4 +1,4 @@
-package com.example.phonebook.ViewModels;
+package com.example.phonebook.viewModels;
 
 import android.app.Application;
 import android.content.Context;

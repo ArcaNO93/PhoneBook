@@ -107,10 +107,10 @@ public class DataBaseHandler extends SQLiteOpenHelper {
     public void addContact(Contact contact) {
         ContentValues cv = new ContentValues();
 
-        cv.put(CONTACT_NAME, contact.getName());
-        cv.put(CONTACT_PHONE, contact.getPhone());
-        cv.put(CONTACT_EMAIL, contact.getEmail());
-        cv.put(CONTACT_ADDRESS, contact.getAddress());
+        cv.put(CONTACT_NAME, contact.getContactName());
+        cv.put(CONTACT_PHONE, contact.getContactPhone());
+        cv.put(CONTACT_EMAIL, contact.getContactEmail());
+        cv.put(CONTACT_ADDRESS, contact.getContactAddress());
 
         mDB.insert("contacts", null, cv);
     }
@@ -125,10 +125,10 @@ public class DataBaseHandler extends SQLiteOpenHelper {
             cursor.moveToFirst();
 
         Contact contact = new Contact();
-        contact.setName(cursor.getString(0));
-        contact.setPhone(cursor.getString(1));
-        contact.setEmail(cursor.getString(2));
-        contact.setAddress(cursor.getString(3));
+        contact.setContactName(cursor.getString(0));
+        contact.setContactPhone(cursor.getString(1));
+        contact.setContactEmail(cursor.getString(2));
+        contact.setContactAddress(cursor.getString(3));
         cursor.close();
 
         return contact;
@@ -143,10 +143,10 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 Contact contact = new Contact();
-                contact.setName(cursor.getString(0));
-                contact.setPhone(cursor.getString(1));
-                contact.setEmail(cursor.getString(2));
-                contact.setAddress(cursor.getString(3));
+                contact.setContactName(cursor.getString(0));
+                contact.setContactPhone(cursor.getString(1));
+                contact.setContactEmail(cursor.getString(2));
+                contact.setContactAddress(cursor.getString(3));
                 contactList.add(contact);
             } while (cursor.moveToNext());
         }
@@ -157,16 +157,16 @@ public class DataBaseHandler extends SQLiteOpenHelper {
     public void updateContact(Contact contact) {
         ContentValues cv = new ContentValues();
 
-        cv.put(CONTACT_NAME, contact.getName());
-        cv.put(CONTACT_PHONE, contact.getPhone());
-        cv.put(CONTACT_EMAIL, contact.getEmail());
-        cv.put(CONTACT_ADDRESS, contact.getAddress());
+        cv.put(CONTACT_NAME, contact.getContactName());
+        cv.put(CONTACT_PHONE, contact.getContactPhone());
+        cv.put(CONTACT_EMAIL, contact.getContactEmail());
+        cv.put(CONTACT_ADDRESS, contact.getContactAddress());
 
-        mDB.update("contacts", cv, CONTACT_NAME + " = ?", new String[] { String.valueOf(contact.getName()) });
+        mDB.update("contacts", cv, CONTACT_NAME + " = ?", new String[] { String.valueOf(contact.getContactName()) });
     }
 
     public void deleteContact(Contact contact) {
-        mDB.delete("contacts", CONTACT_NAME + " = ?", new String[] { String.valueOf(contact.getName()) });
+        mDB.delete("contacts", CONTACT_NAME + " = ?", new String[] { String.valueOf(contact.getContactName()) });
     }
 
     public void deleteAllContacts() {
