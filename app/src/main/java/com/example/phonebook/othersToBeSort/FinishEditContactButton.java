@@ -11,6 +11,9 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.phonebook.R;
+import com.example.phonebook.model.data.Contact;
+import com.example.phonebook.views.ui.activities.ContactActivity;
+import com.example.phonebook.views.ui.fragments.EditContactFragment;
 
 import java.util.Objects;
 
@@ -23,7 +26,7 @@ public class FinishEditContactButton extends Fragment {
 
         mFinishEditContactButton.setOnClickListener(v-> {
             assert getFragmentManager() != null;
-            EditContact fragment = (EditContact) getFragmentManager().findFragmentByTag(ContactActivity.CONTACT_EDIT_FRAGMENT);
+            EditContactFragment fragment = (EditContactFragment) getFragmentManager().findFragmentByTag(null);
             Contact contact = (Contact) Objects.requireNonNull(getActivity()).getIntent().getSerializableExtra("ITEM");
             assert fragment != null;
             if(fragment.getContactName().isEmpty()) {
@@ -38,7 +41,7 @@ public class FinishEditContactButton extends Fragment {
                 contact.setContactAddress(fragment.getContactAddress());
                 getActivity().getIntent().putExtra("ITEM_POSITION", getActivity().getIntent().getIntExtra("ITEM_POSITION",0));
                 getActivity().getIntent().putExtra("ITEM", contact);
-                getActivity().setResult(MainActivity.RESULT_EDIT, getActivity().getIntent());
+                getActivity().setResult(0, getActivity().getIntent());
                 getActivity().finish();
             }
         });

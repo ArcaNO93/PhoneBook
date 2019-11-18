@@ -1,4 +1,4 @@
-package com.example.phonebook.othersToBeSort;
+package com.example.phonebook.model.service;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

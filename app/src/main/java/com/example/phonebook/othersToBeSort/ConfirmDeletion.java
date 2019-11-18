@@ -27,7 +27,7 @@ public class ConfirmDeletion extends DialogFragment {
 
         mConfirmDeletion.setOnClickListener(v -> {
             Objects.requireNonNull(getActivity()).getIntent().putExtra("ITEM_POSITION", getActivity().getIntent().getIntExtra("ITEM_POSITION", 0));
-            getActivity().setResult(MainActivity.RESULT_DELETE, getActivity().getIntent());
+            getActivity().setResult(0, getActivity().getIntent());
             getActivity().finish();
         });
         return view;

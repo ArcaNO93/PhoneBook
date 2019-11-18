@@ -1,4 +1,4 @@
-package com.example.phonebook.repos;
+package com.example.phonebook.model.repos;
 
 import android.app.Application;
 import android.content.Context;
@@ -53,16 +53,6 @@ public class UsersRepoShPref implements UsersRepo {
     @Override
     public boolean verifyUser(String _user, String _userPassword) {
         return mUsers.getString(_user, "").equals(_userPassword);
-    }
-
-    @Override
-    public void setCurrentUser(String _currentUser) {
-        mUsers.edit().putString("Current user", _currentUser).apply();
-    }
-
-    @Override
-    public void setSignedUp(Boolean _flag) {
-        mUsers.edit().putString("Signed up", String.valueOf(_flag)).apply();
     }
 
 }

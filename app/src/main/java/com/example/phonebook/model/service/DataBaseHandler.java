@@ -1,4 +1,4 @@
-package com.example.phonebook.othersToBeSort;
+package com.example.phonebook.model.service;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,6 +7,8 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Build;
+
+import com.example.phonebook.model.data.Contact;
 
 import java.io.File;
 import java.io.FileOutputStream;

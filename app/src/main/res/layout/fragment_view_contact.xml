@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
+
     <data>
-        <variable name="contact" type="com.example.phonebook.othersToBeSort.Contact" />
+        <variable
+            name="contact"
+            type="com.example.phonebook.model.data.Contact" />
+
     </data>
+
     <FrameLayout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/contactView"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    tools:context=".othersToBeSort.ViewContact">
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/contactView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:context=".views.ui.fragments.ViewContactFragment">
 
     <TableLayout
         android:id="@+id/contactViewPanel"
@@ -40,9 +45,9 @@
                 android:layout_width="215dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="@string/contact_name"
                 android:textColor="@android:color/background_dark"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:text="@{contact.contactName}"/>
 
         </TableRow>
 
@@ -66,9 +71,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="@string/contact_phone"
                 android:textColor="@android:color/background_dark"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:text="@{contact.contactPhone}"/>
 
         </TableRow>
 
@@ -92,9 +97,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="@string/contact_email"
                 android:textColor="@android:color/background_dark"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:text="@{contact.contactEmail}"/>
         </TableRow>
 
         <TableRow
@@ -116,9 +121,9 @@
                 android:layout_width="215dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="@string/contact_address"
                 android:textColor="@android:color/background_dark"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:text="@{contact.contactAddress}"/>
 
         </TableRow>
 

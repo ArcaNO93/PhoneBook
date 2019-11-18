@@ -1,4 +1,4 @@
-package com.example.phonebook.othersToBeSort;
+package com.example.phonebook.model.data;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -47,23 +47,33 @@ public class Contact implements Serializable {
     }
 
     public void setContactName(String _name) {
-        contactName = _name;
+        this.contactName = _name;
         attributes.put("Name", _name);
     }
 
     public void setContactPhone(String _phone) {
-        contactPhone = _phone;
+        this.contactPhone = _phone;
         attributes.put("Phone", _phone);
     }
 
     public void setContactEmail(String _email) {
-        contactEmail = _email;
+        this.contactEmail = _email;
         attributes.put("Email", _email);
     }
 
     public void setContactAddress(String _address) {
-        contactAddress = _address;
+        this.contactAddress = _address;
         attributes.put("Address", _address);
     }
 
+    @org.jetbrains.annotations.Contract(value = "null -> false", pure = true)
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Contact contact = (Contact) o;
+        return ID == contact.ID &&
+                contactName.equals(contact.contactName) &&
+                contactPhone.equals(contact.contactPhone);
+    }
 }

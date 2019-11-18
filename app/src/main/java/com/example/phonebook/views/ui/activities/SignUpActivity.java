@@ -1,4 +1,4 @@
-package com.example.phonebook.views;
+package com.example.phonebook.views.ui.activities;
 
 import android.os.Bundle;
 
@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.phonebook.R;
 import com.example.phonebook.databinding.ActivitySignUpBinding;
-import com.example.phonebook.viewModels.SignUpViewModel;
+import com.example.phonebook.viewModels.SignUpActivityViewModel;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -16,7 +16,7 @@ public class SignUpActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        SignUpViewModel signUp = ViewModelProviders.of(this).get(SignUpViewModel.class);
+        SignUpActivityViewModel signUp = ViewModelProviders.of(this).get(SignUpActivityViewModel.class);
         ActivitySignUpBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_sign_up);
         binding.setUser(signUp);
         binding.setLifecycleOwner(this);
@@ -26,4 +26,5 @@ public class SignUpActivity extends AppCompatActivity {
                 finish();
         });
     }
+
 }

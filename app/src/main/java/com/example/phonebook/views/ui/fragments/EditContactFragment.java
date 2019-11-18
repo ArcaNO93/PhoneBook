@@ -1,4 +1,4 @@
-package com.example.phonebook.othersToBeSort;
+package com.example.phonebook.views.ui.fragments;
 
 import android.os.Bundle;
 
@@ -10,8 +10,9 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 import com.example.phonebook.R;
+import com.example.phonebook.model.data.Contact;
 
-public class EditContact extends Fragment {
+public class EditContactFragment extends Fragment {
 
     private EditText mContactName;
     private EditText mContactPhone;
@@ -37,19 +38,19 @@ public class EditContact extends Fragment {
         return view;
     }
 
-    String getContactName() {
+    public String getContactName() {
         return mContactName.getText().toString();
     }
 
-    String getContactPhone() {
+    public String getContactPhone() {
         return mContactPhone.getText().toString();
     }
 
-    String getContactEmail() {
+    public String getContactEmail() {
         return mContactEmail.getText().toString();
     }
 
-    String getContactAddress() {
+    public String getContactAddress() {
         return mContactAddress.getText().toString();
     }
 

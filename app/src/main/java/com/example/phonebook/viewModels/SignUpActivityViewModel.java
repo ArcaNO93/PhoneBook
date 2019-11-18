@@ -9,16 +9,16 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.phonebook.R;
-import com.example.phonebook.repos.UsersRepoShPref;
+import com.example.phonebook.model.repos.UsersRepoShPref;
 
-public class SignUpViewModel extends AndroidViewModel {
+public class SignUpActivityViewModel extends AndroidViewModel {
     private String mLogin;
     private String mPassword;
     private UsersRepoShPref mRepo;
     private Context mContext;
     private MutableLiveData<Boolean> isFinished = new MutableLiveData<>();
 
-    public SignUpViewModel(@NonNull Application _application) {
+    public SignUpActivityViewModel(@NonNull Application _application) {
         super(_application);
         mLogin = "";
         mPassword = "";
