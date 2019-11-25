@@ -1,24 +1,37 @@
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <TextView
-        android:id="@+id/contactListName"
-        android:layout_width="wrap_content"
+    <data>
+        <variable
+            name="contact"
+            type="com.example.phonebook.model.data.Contact" />
+
+        <variable
+            name="callback"
+            type="com.example.phonebook.model.service.ContactClickCallback" />
+    </data>
+
+    <TableLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:text="Name"
-        android:textColor="@android:color/holo_red_dark"
-        android:textSize="35sp" />
+        android:onClick="@{() -> callback.onClick(contact)}">
 
-    <TextView
-        android:id="@+id/contactListPhone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:text="Phone"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="25dp" />
+        <TextView
+            android:id="@+id/contactListName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="@{contact.contactName}"
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="35sp" />
 
-</TableLayout>
+        <TextView
+            android:id="@+id/contactListPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="@{contact.contactPhone}"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="25sp" />
 
+    </TableLayout>
+</layout>

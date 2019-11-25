@@ -1,10 +1,22 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".othersToBeSort.MainActivity">
+    tools:context=".views.ui.activities.MainActivity">
 
     <item
         android:id="@+id/menuActionSignOut"
         android:orderInCategory="1"
         android:title="@string/menu_item_sign_out_text" />
+
+    <item
+        android:id="@+id/menuActionChange"
+        android:orderInCategory="2"
+        android:title="@string/menu_item_change_text"
+        android:visible="false" />
+
+    <item
+        android:id="@+id/confirmDeletion"
+        android:orderInCategory="3"
+        android:title="@string/menu_item_delete_text"
+        android:visible="false" />
 
 </menu>

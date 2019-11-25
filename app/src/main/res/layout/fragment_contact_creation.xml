@@ -1,112 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/contactCreate"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    tools:context=".othersToBeSort.CreateContact">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TableLayout
-        android:id="@+id/contactCreatePanel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.25">
+    <data>
+        <variable name="contact" type="com.example.phonebook.model.data.Contact" />
+        <variable name="serviceCreate" type="com.example.phonebook.viewModels.MainActivityViewModel" />
+    </data>
 
-        <TableRow
-            android:id="@+id/contactListName"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="20dp">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/contactCreate"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/contactCreateNameText"
-                android:layout_width="wrap_content"
+        <TableLayout
+            android:id="@+id/contactCreatePanel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.25">
+
+            <TableRow
+                android:id="@+id/contactListName"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="@string/add_contact_form_name"
-                android:textColor="@android:color/black" />
+                android:layout_marginBottom="20dp">
 
-            <EditText
-                android:id="@+id/contactCreateNameEnterBox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:importantForAutofill="no"
-                android:inputType="textPersonName" />
-        </TableRow>
+                <TextView
+                    android:id="@+id/contactCreateNameText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@string/add_contact_form_name"
+                    android:textColor="@android:color/black" />
 
-        <TableRow
-            android:id="@+id/contactListPhone"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="20dp">
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:importantForAutofill="no"
+                    android:inputType="textPersonName"
+                    android:text="@={contact.contactName}" />
+            </TableRow>
 
-            <TextView
-                android:id="@+id/contactCreatePhoneText"
-                android:layout_width="wrap_content"
+            <TableRow
+                android:id="@+id/contactListPhone"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="@string/add_contact_form_phone"
-                android:textColor="#000000" />
+                android:layout_marginBottom="20dp">
 
-            <EditText
-                android:id="@+id/contactCreatePhoneEnterBox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:importantForAutofill="no"
-                android:inputType="phone" />
-        </TableRow>
+                <TextView
+                    android:id="@+id/contactCreatePhoneText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@string/add_contact_form_phone"
+                    android:textColor="#000000" />
 
-        <TableRow
-            android:id="@+id/contactCreateEmail"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="20dp">
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:importantForAutofill="no"
+                    android:inputType="phone"
+                    android:text="@={contact.contactPhone}" />
+            </TableRow>
 
-            <TextView
-                android:id="@+id/contactCreateEmailText"
-                android:layout_width="wrap_content"
+            <TableRow
+                android:id="@+id/contactCreateEmail"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="@string/add_contact_form_email"
-                android:textColor="#000000" />
+                android:layout_marginBottom="20dp">
 
-            <EditText
-                android:id="@+id/contactCreateEmailEnterBox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:importantForAutofill="no"
-                android:inputType="textEmailAddress" />
-        </TableRow>
+                <TextView
+                    android:id="@+id/contactCreateEmailText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@string/add_contact_form_email"
+                    android:textColor="#000000" />
 
-        <TableRow
-            android:id="@+id/contactCreateAddress"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:importantForAutofill="no"
+                    android:inputType="textEmailAddress"
+                    android:text="@={contact.contactEmail}" />
+            </TableRow>
 
-            <TextView
-                android:id="@+id/contactCreateAdressText"
-                android:layout_width="wrap_content"
+            <TableRow
+                android:id="@+id/contactCreateAddress"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="@string/add_contact_form_address"
-                android:textColor="#000000" />
+                android:layout_marginBottom="20dp">
 
-            <EditText
-                android:id="@+id/contactCreateAddressEnterBox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:importantForAutofill="no"
-                android:inputType="text" />
-        </TableRow>
-    </TableLayout>
+                <TextView
+                    android:id="@+id/contactCreateAdressText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@string/add_contact_form_address"
+                    android:textColor="#000000" />
 
-</FrameLayout>
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    android:text="@={contact.contactAddress}" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal">
+
+            </TableRow>
+
+        </TableLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/contactCreateButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/baseline_done_white_48"
+            app:backgroundTint="@color/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.9"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.94" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
