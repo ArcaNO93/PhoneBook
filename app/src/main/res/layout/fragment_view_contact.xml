@@ -1,134 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
-        <variable
-            name="contact"
-            type="com.example.phonebook.model.data.Contact" />
+        <variable name="contact" type="com.example.phonebook.model.data.Contact" />
 
     </data>
 
-    <FrameLayout xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/contactView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:context=".views.ui.fragments.ViewContactFragment">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TableLayout
-        android:id="@+id/contactViewPanel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.25">
+        <TableLayout
+            android:id="@+id/contactViewPanel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.25">
 
-        <TableRow
-            android:id="@+id/contactViewName"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="20dp">
-
-            <TextView
-                android:id="@+id/contactViewNameText"
-                android:layout_width="wrap_content"
-                android:layout_height="45dp"
-                android:gravity="center"
-                android:text="@string/add_contact_form_name"
-                android:textColor="#000000"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/contactViewNameTextBox"
-                android:layout_width="215dp"
+            <TableRow
+                android:id="@+id/contactViewName"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:textColor="@android:color/background_dark"
-                android:textSize="18sp"
-                android:text="@{contact.contactName}"/>
+                android:layout_marginBottom="20dp">
 
-        </TableRow>
+                <TextView
+                    android:id="@+id/contactViewNameText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dp"
+                    android:gravity="center"
+                    android:text="@string/add_contact_form_name"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
 
-        <TableRow
-            android:id="@+id/contactViewPhone"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="20dp">
+                <TextView
+                    android:id="@+id/contactViewNameTextBox"
+                    android:layout_width="215dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@{contact.contactName}"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18sp" />
 
-            <TextView
-                android:id="@+id/contactViewPhoneText"
-                android:layout_width="wrap_content"
-                android:layout_height="45dp"
-                android:gravity="center"
-                android:text="@string/add_contact_form_phone"
-                android:textColor="#000000"
-                android:textSize="14sp" />
+            </TableRow>
 
-            <TextView
-                android:id="@+id/contactViewPhoneTextBox"
-                android:layout_width="wrap_content"
+            <TableRow
+                android:id="@+id/contactViewPhone"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:textColor="@android:color/background_dark"
-                android:textSize="18sp"
-                android:text="@{contact.contactPhone}"/>
+                android:layout_marginBottom="20dp">
 
-        </TableRow>
+                <TextView
+                    android:id="@+id/contactViewPhoneText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dp"
+                    android:gravity="center"
+                    android:text="@string/add_contact_form_phone"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
 
-        <TableRow
-            android:id="@+id/contactViewEmail"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="20dp">
+                <TextView
+                    android:id="@+id/contactViewPhoneTextBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@{contact.contactPhone}"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18sp" />
 
-            <TextView
-                android:id="@+id/contactViewEmailText"
-                android:layout_width="wrap_content"
-                android:layout_height="45dp"
-                android:gravity="center"
-                android:text="@string/add_contact_form_email"
-                android:textColor="#000000"
-                android:textSize="14sp" />
+            </TableRow>
 
-            <TextView
-                android:id="@+id/contactVewEmailTextBox"
-                android:layout_width="wrap_content"
+            <TableRow
+                android:id="@+id/contactViewEmail"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:textColor="@android:color/background_dark"
-                android:textSize="18sp"
-                android:text="@{contact.contactEmail}"/>
-        </TableRow>
+                android:layout_marginBottom="20dp">
 
-        <TableRow
-            android:id="@+id/contactViewAddres"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/contactViewEmailText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dp"
+                    android:gravity="center"
+                    android:text="@string/add_contact_form_email"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/contactViewAddressText"
-                android:layout_width="wrap_content"
-                android:layout_height="45dp"
-                android:gravity="center"
-                android:text="@string/add_contact_form_address"
-                android:textColor="#000000"
-                android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/contactVewEmailTextBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@{contact.contactEmail}"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18sp" />
+            </TableRow>
 
-            <TextView
-                android:id="@+id/contactViewAddressTextBox"
-                android:layout_width="215dp"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:textColor="@android:color/background_dark"
-                android:textSize="18sp"
-                android:text="@{contact.contactAddress}"/>
+            <TableRow
+                android:id="@+id/contactViewAddres"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-        </TableRow>
+                <TextView
+                    android:id="@+id/contactViewAddressText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dp"
+                    android:gravity="center"
+                    android:text="@string/add_contact_form_address"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
 
-    </TableLayout>
+                <TextView
+                    android:id="@+id/contactViewAddressTextBox"
+                    android:layout_width="215dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@{contact.contactAddress}"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18sp" />
 
-</FrameLayout>
+            </TableRow>
+
+        </TableLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

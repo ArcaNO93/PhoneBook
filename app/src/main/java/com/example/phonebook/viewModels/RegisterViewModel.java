@@ -9,57 +9,49 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.phonebook.R;
+import com.example.phonebook.model.data.User;
 import com.example.phonebook.model.repos.UsersRepoShPref;
 
-public class SignUpActivityViewModel extends AndroidViewModel {
-    private String mLogin;
-    private String mPassword;
+public class RegisterViewModel extends AndroidViewModel {
+
+    private User mUser;
     private UsersRepoShPref mRepo;
     private Context mContext;
-    private MutableLiveData<Boolean> isFinished = new MutableLiveData<>();
+    private MutableLiveData<Boolean> registrationDone = new MutableLiveData<>();
 
-    public SignUpActivityViewModel(@NonNull Application _application) {
+    public RegisterViewModel(@NonNull Application _application) {
         super(_application);
-        mLogin = "";
-        mPassword = "";
+        mUser = new User();
         mContext = _application.getApplicationContext();
         mRepo = new UsersRepoShPref(_application);
     }
 
-    public MutableLiveData<Boolean> getIsFinished() {
-        return isFinished;
+    public MutableLiveData<Boolean> getRegistrationDone() {
+        return registrationDone;
     }
 
-    public String getLogin() {
-        return mLogin;
+    public User getUser() {
+        return mUser;
     }
 
-    public String getPassword() {
-        return mPassword;
-    }
-
-    public void setLogin(String _mLogin) {
-        this.mLogin = _mLogin;
-    }
-
-    public void setPassword(String _mPassword) {
-        this.mPassword = _mPassword;
+    public void setUser(User _user) {
+        mUser = _user;
     }
 
     public void signUp() {
-        if (mLogin.length() == 0) {
+        if (mUser.getLogin().length() == 0) {
             showToast(mContext, mContext.getString(R.string.error_empty_login));
-        } else if (mPassword.length() == 0) {
+        } else if (mUser.getPassword().length() == 0) {
             showToast(mContext, mContext.getString(R.string.error_empty_password));
         } else {
             try {
-                mRepo.addUser(mLogin, mPassword);
+                mRepo.addUser(mUser.getLogin(), mUser.getPassword());
             } catch (IllegalArgumentException e) {
                 showToast(mContext, mContext.getString(R.string.error_login_exists));
                 return;
             }
             showToast(mContext, mContext.getString(R.string.user_creation_success));
-            isFinished.setValue(true);
+            registrationDone.setValue(true);
         }
     }
 
@@ -68,4 +60,3 @@ public class SignUpActivityViewModel extends AndroidViewModel {
         mErrorNoLogin.show();
     }
 }
-

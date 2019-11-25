@@ -1,57 +1,42 @@
 package com.example.phonebook.views.ui.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProviders;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 
 import com.example.phonebook.R;
+import com.example.phonebook.databinding.FragmentEditContactBinding;
 import com.example.phonebook.model.data.Contact;
+import com.example.phonebook.model.service.Flags;
+import com.example.phonebook.views.ui.activities.MainActivity;
+
+import java.util.Objects;
 
 public class EditContactFragment extends Fragment {
 
-    private EditText mContactName;
-    private EditText mContactPhone;
-    private EditText mContactEmail;
-    private EditText mContactAddress;
-
+    @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_edit_contact, container, false);
-
-        mContactName = view.findViewById(R.id.contactEditNameEnterBox);
-        mContactPhone = view.findViewById(R.id.contactEditPhoneEnterBox);
-        mContactEmail = view.findViewById(R.id.contactEditEmailEnterBox);
-        mContactAddress = view.findViewById(R.id.contactEditAddressEnterBox);
-
-        Contact contact = (Contact) getActivity().getIntent().getSerializableExtra("ITEM");
-
-        mContactName.setText(contact.getContactName());
-        mContactPhone.setText(contact.getContactPhone());
-        mContactEmail.setText(contact.getContactEmail());
-        mContactAddress.setText(contact.getContactAddress());
-
-        return view;
+        FragmentEditContactBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_edit_contact, container, false);
+        binding.setContact((Contact)getActivity().getIntent().getSerializableExtra("contact"));
+        return binding.getRoot();
     }
 
-    public String getContactName() {
-        return mContactName.getText().toString();
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
     }
 
-    public String getContactPhone() {
-        return mContactPhone.getText().toString();
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
     }
-
-    public String getContactEmail() {
-        return mContactEmail.getText().toString();
-    }
-
-    public String getContactAddress() {
-        return mContactAddress.getText().toString();
-    }
-
 }

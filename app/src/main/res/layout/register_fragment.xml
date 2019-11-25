@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".views.ui.activities.SignUpActivity">
-
+<layout>
     <data>
-        <variable
-            name="User"
-            type="com.example.phonebook.viewModels.SignUpActivityViewModel" />
+        <variable name="user"  type="com.example.phonebook.model.data.User" />
+        <variable name="service" type="com.example.phonebook.viewModels.RegisterViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorPrimary">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/createUserForm"
+        android:orientation="vertical"
+        android:background="@color/colorPrimary"
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        tools:context=".views.ui.fragments.RegisterFragment">
 
-        <LinearLayout
-            android:id="@+id/createUserForm"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.6">
+            <ImageView
+                android:id="@+id/SignUpIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="60dp"
+                app:layout_constraintBottom_toTopOf="@id/createUserForm"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/add_512" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -42,14 +42,14 @@
                 android:textColorHighlight="@android:color/white"
                 android:textColorLink="@android:color/white"
                 android:textCursorDrawable="@drawable/edit_text_cursor"
-                android:text="@={User.login}"
+                android:text="@={user.login}"
                 app:backgroundTint="@android:color/white" />
 
             <TextView
                 android:id="@+id/createUserFormPasswordText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="30dp"
                 android:text="@string/create_user_form_password_text"
                 android:textColor="@android:color/white" />
 
@@ -62,28 +62,17 @@
                 android:textColorHighlight="@android:color/white"
                 android:textColorLink="@android:color/white"
                 android:textCursorDrawable="@drawable/edit_text_cursor"
-                android:text="@={User.password}"
+                android:text="@={user.password}"
                 app:backgroundTint="@android:color/white" />
 
             <androidx.appcompat.widget.AppCompatButton
                 style="@style/AppTheme.RoundedCornerMaterialButton"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="30dp"
                 android:text="@string/create_user_button_text"
-                android:onClick="@{() -> User.signUp()}"/>
+                android:onClick="@{() -> service.signUp()}"/>
 
-        </LinearLayout>
 
-        <ImageView
-            android:id="@+id/SignUpIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@id/createUserForm"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/add_512" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 </layout>

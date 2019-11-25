@@ -7,4 +7,16 @@
         android:orderInCategory="1"
         android:title="@string/menu_item_sign_out_text" />
 
+    <item
+        android:id="@+id/menuActionChange"
+        android:orderInCategory="2"
+        android:title="@string/menu_item_change_text"
+        android:visible="false" />
+
+    <item
+        android:id="@+id/confirmDeletion"
+        android:orderInCategory="3"
+        android:title="@string/menu_item_delete_text"
+        android:visible="false" />
+
 </menu>

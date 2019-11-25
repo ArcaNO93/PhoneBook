@@ -44,8 +44,8 @@
 
     <string name="user_creation_success">User created successfully</string>
     <string name="menu_item_sign_out_text">Sign out</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="menu_item_delete_text">Delete</string>
+    <string name="menu_item_change_text">Change</string>
     <string name="confirm_deletion_text">Confirm deletion</string>
+
 </resources>

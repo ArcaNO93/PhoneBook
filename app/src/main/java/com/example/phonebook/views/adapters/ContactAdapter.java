@@ -44,19 +44,13 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
 
                 @Override
                 public boolean areItemsTheSame(int oldItemPosition, int newItemPosition) {
-                    return mContacts.get(oldItemPosition).getContactName().equals(_contacts.get(newItemPosition).getContactName());
+                    return mContacts.get(oldItemPosition).getID().equals(_contacts.get(newItemPosition).getID());
                 }
 
                 @Override
                 public boolean areContentsTheSame(int oldItemPosition, int newItemPosition) {
                     return mContacts.get(oldItemPosition).equals(_contacts.get(newItemPosition));
                 }
-
-                @Override
-                public Object getChangePayload(int oldItemPosition, int newItemPosition) {
-                    return super.getChangePayload(oldItemPosition, newItemPosition);
-                }
-
             });
 
             mContacts = _contacts;

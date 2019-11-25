@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="250dp"
-    android:layout_height="100dp"
-    android:background="@drawable/rounded_shape"
-    tools:context=".othersToBeSort.ConfirmDeletion">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="service"
+            type="com.example.phonebook.viewModels.MainActivityViewModel" />
+    </data>
 
     <TableLayout
+        android:layout_width="250dp"
+        android:layout_height="100dp"
         android:id="@+id/confirmDeletionAlertDialog"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/rounded_shape_with_border">
-
+        android:background="@drawable/rounded_shape_with_border"
+        tools:context=".othersToBeSort.ConfirmDeletionContactFragment">
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -44,8 +46,10 @@
                 style="@style/AppTheme.RoundedCornerMaterialButton"
                 android:layout_width="118dp"
                 android:layout_height="50dp"
-                android:background="@drawable/rounded_shape_bottom_rightt"
+                android:background="@drawable/rounded_shape_bottom_right"
                 android:text="@android:string/ok" />
         </TableRow>
+
     </TableLayout>
-</FrameLayout>
+
+</layout>

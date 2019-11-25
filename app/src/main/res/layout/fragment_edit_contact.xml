@@ -3,6 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable name="contact" type="com.example.phonebook.model.data.Contact" />
+        <variable name="serviceEdit" type="com.example.phonebook.viewModels.MainActivityViewModel" />
+    </data>
+
     <FrameLayout
         android:id="@+id/contactEdit"
         android:layout_width="wrap_content"
@@ -39,7 +44,8 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:importantForAutofill="no"
-                    android:inputType="textPersonName"/>
+                    android:inputType="textPersonName"
+                    android:text="@={contact.contactName}"/>
             </TableRow>
 
             <TableRow
@@ -62,7 +68,8 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:importantForAutofill="no"
-                    android:inputType="phone" />
+                    android:inputType="phone"
+                    android:text="@={contact.contactPhone}"/>
             </TableRow>
 
             <TableRow
@@ -85,13 +92,15 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:importantForAutofill="no"
-                    android:inputType="textEmailAddress" />
+                    android:inputType="textEmailAddress"
+                    android:text="@={contact.contactEmail}"/>
             </TableRow>
 
             <TableRow
                 android:id="@+id/contactEditAddress"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_marginBottom="20dp">
 
                 <TextView
                     android:id="@+id/contactEditAddressText"
@@ -107,7 +116,22 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:importantForAutofill="no"
-                    android:inputType="text" />
+                    android:inputType="text"
+                    android:text="@={contact.contactAddress}"/>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/contactCreateButton"
+                    style="@style/AppTheme.RoundedCornerMaterialButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{() -> serviceEdit.edit(contact)}"
+                    android:text="FINISH" />
             </TableRow>
 
         </TableLayout>
