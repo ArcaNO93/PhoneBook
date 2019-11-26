@@ -19,7 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.phonebook.R;
-import com.example.phonebook.databinding.FragmentViewContactBinding;
+import com.example.phonebook.databinding.ViewContactFragmentBinding;
 import com.example.phonebook.viewModels.MainActivityViewModel;
 
 public class ViewContactFragment extends Fragment {
@@ -29,7 +29,7 @@ public class ViewContactFragment extends Fragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        FragmentViewContactBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_view_contact, container, false);
+        ViewContactFragmentBinding binding = DataBindingUtil.inflate(inflater, R.layout.view_contact_fragment, container, false);
         binding.setContact(mViewModel.getContact());
         requireActivity().invalidateOptionsMenu();
         return binding.getRoot();
@@ -45,8 +45,8 @@ public class ViewContactFragment extends Fragment {
     @Override
     public void onPrepareOptionsMenu(@NonNull Menu menu) {
         menu.findItem(R.id.menuActionSignOut).setVisible(false);
-        menu.findItem(R.id.menuActionChange).setVisible(true);
-        menu.findItem(R.id.confirmDeletion).setVisible(true);
+        menu.findItem(R.id.createContactFragment).setVisible(true);
+        menu.findItem(R.id.confirmDeletionDialogFragment).setVisible(true);
         super.onPrepareOptionsMenu(menu);
     }
 

@@ -4,7 +4,6 @@
         <variable
             name="contact"
             type="com.example.phonebook.model.data.Contact" />
-
         <variable
             name="callback"
             type="com.example.phonebook.model.service.ContactClickCallback" />

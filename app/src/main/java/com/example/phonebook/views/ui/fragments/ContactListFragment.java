@@ -11,7 +11,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,10 +26,6 @@ public class ContactListFragment extends Fragment {
     public static final String TAG = "com.example.phonebook.views.fragments.ContactListFragment";
     private ContactAdapter mContactAdapter;
     private MainActivityViewModel mViewModel;
-
-    public static ContactListFragment newInstance() {
-        return new ContactListFragment();
-    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -61,9 +56,9 @@ public class ContactListFragment extends Fragment {
         });
     }
 
-    private final ContactClickCallback mContactClickCallback = _contact -> {
+    private final ContactClickCallback mContactClickCallback = (contact) -> {
         if (getLifecycle().getCurrentState().isAtLeast(Lifecycle.State.STARTED)) {
-            mViewModel.setContact(_contact);
+            mViewModel.setContact(contact);
             NavHostFragment.findNavController(this).navigate(ContactListFragmentDirections.actionView());
         }
     };

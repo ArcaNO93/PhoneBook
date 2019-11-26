@@ -28,10 +28,6 @@ public class LogInFragment extends Fragment {
     public static final String TAG = "com.example.phonebook.views.fragments.LogInFragment";
     private LogInViewModel mViewModel;
 
-    public static LogInFragment newInstance() {
-        return new LogInFragment();
-    }
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

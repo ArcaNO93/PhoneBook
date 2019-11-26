@@ -18,17 +18,18 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.phonebook.R;
-import com.example.phonebook.databinding.FragmentContactCreationBinding;
+import com.example.phonebook.databinding.ContactCreationFragmentBinding;
 import com.example.phonebook.viewModels.MainActivityViewModel;
 
 public class CreateContactFragment extends Fragment {
 
+    public static final String TAG = "com.example.phonebook.views.fragments.CreateContactFragment";
     private MainActivityViewModel viewModel;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        FragmentContactCreationBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_contact_creation, container, false);
+        ContactCreationFragmentBinding binding = DataBindingUtil.inflate(inflater, R.layout.contact_creation_fragment, container, false);
         binding.setContact(viewModel.getContact());
         binding.setServiceCreate(viewModel);
 

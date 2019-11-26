@@ -2,7 +2,6 @@ package com.example.phonebook.viewModels;
 
 import android.app.Application;
 import android.content.Context;
-import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -58,15 +57,22 @@ public class MainActivityViewModel extends AndroidViewModel {
             mErrorNoName.show();
             return false;
         }
+
         Contact contact = new Contact();
         contact.setContactName(mContact.getContactName());
         contact.setContactPhone(mContact.getContactPhone());
         contact.setContactEmail(mContact.getContactEmail());
         contact.setContactAddress(mContact.getContactAddress());
-        mCurrentContactList.add(contact);
+
+        int index = mCurrentContactList.indexOf(mContact);
+
+        if(index < 0)
+            mCurrentContactList.add(contact);
+        else
+            mCurrentContactList.set(index, contact);
+
         mContacts.postValue(mCurrentContactList);
         mContact.clean();
-
         return true;
     }
 
@@ -74,24 +80,6 @@ public class MainActivityViewModel extends AndroidViewModel {
         mCurrentContactList.remove(mContact);
         mContacts.postValue(mCurrentContactList);
         mContact.clean();
-    }
-
-    public void updateContact(int _contactPosition, String _newName, String _newPone, String _newEmail, String _newAddress) {
-        Contact contact = mCurrentContactList.get(_contactPosition);
-        contact.setContactName(_newName);
-        contact.setContactPhone(_newPone);
-        contact.setContactEmail(_newEmail);
-        contact.setContactAddress(_newAddress);
-        mCurrentContactList.set(_contactPosition, contact);
-        mContacts.setValue(mCurrentContactList);
-    }
-
-    public void edit(Contact _contact) {
-        mContact = _contact;
-        if(mContact.getContactName().length() == 0) {
-            Toast mErrorNoName = Toast.makeText(mContext, "Contact is empty", Toast.LENGTH_SHORT);
-            mErrorNoName.show();
-        }
     }
 
     public void signOut() {

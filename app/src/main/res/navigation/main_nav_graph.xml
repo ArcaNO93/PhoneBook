@@ -25,7 +25,7 @@
         android:id="@+id/createContactFragment"
         android:name="com.example.phonebook.views.ui.fragments.CreateContactFragment"
         android:label="fragment_contact_creation"
-        tools:layout="@layout/fragment_contact_creation" >
+        tools:layout="@layout/contact_creation_fragment" >
         <action
             android:id="@+id/action_create_back"
             app:destination="@id/contactListFragment" />
@@ -34,16 +34,19 @@
         android:id="@+id/viewContactFragment"
         android:name="com.example.phonebook.views.ui.fragments.ViewContactFragment"
         android:label="fragment_view_contact"
-        tools:layout="@layout/fragment_view_contact" >
+        tools:layout="@layout/view_contact_fragment" >
         <action
             android:id="@+id/action_delete"
-            app:destination="@id/confirmDeletion" />
+            app:destination="@id/confirmDeletionDialogFragment" />
+        <action
+            android:id="@+id/action_edit"
+            app:destination="@id/createContactFragment" />
     </fragment>
     <dialog
-        android:id="@+id/confirmDeletion"
+        android:id="@+id/confirmDeletionDialogFragment"
         android:name="com.example.phonebook.views.ui.fragments.ConfirmDeletionFragment"
         android:label="fragment_confirm_deletion"
-        tools:layout="@layout/fragment_confirm_deletion" >
+        tools:layout="@layout/confirm_deletion_fragment" >
         <action
             android:id="@+id/action_delete_back"
             app:destination="@id/contactListFragment" />

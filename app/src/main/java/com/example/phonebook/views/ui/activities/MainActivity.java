@@ -28,8 +28,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
-        menu.findItem(R.id.menuActionChange).setVisible(false);
-        menu.findItem(R.id.confirmDeletion).setVisible(false);
+        menu.findItem(R.id.createContactFragment).setVisible(false);
+        menu.findItem(R.id.confirmDeletionDialogFragment).setVisible(false);
         super.onCreateOptionsMenu(menu);
         return true;
     }
