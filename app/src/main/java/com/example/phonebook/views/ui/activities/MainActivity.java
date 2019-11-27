@@ -17,11 +17,13 @@ import com.example.phonebook.viewModels.MainActivityViewModel;
 public class MainActivity extends AppCompatActivity {
 
     private MainActivityViewModel mViewModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(MainActivityViewModel.class);
         ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        binding.setLifecycleOwner(this);
         setSupportActionBar(binding.mainActivityToolbar);
     }
 
@@ -40,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         switch (id) {
             case R.id.menuActionSignOut:
                 mViewModel.signOut();
-                setResult(RESULT_FIRST_USER, new Intent(this, AuthorisationActivity.class));
+                startActivity(new Intent(this, AuthorisationActivity.class));
                 finish();
         }
         return false;
@@ -50,11 +52,5 @@ public class MainActivity extends AppCompatActivity {
     public void onPause() {
         super.onPause();
         mViewModel.save();
-    }
-
-    @Override
-    public void onBackPressed() {
-        setResult(RESULT_CANCELED, new Intent(this, AuthorisationActivity.class));
-        finish();
     }
 }

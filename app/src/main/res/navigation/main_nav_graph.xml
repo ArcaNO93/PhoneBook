@@ -12,15 +12,12 @@
         tools:layout="@layout/contact_list_fragment" >
         <action
             android:id="@+id/action_create"
-            app:destination="@id/createContactFragment"
-            app:popUpTo="@+id/contactListFragment"
-            app:popUpToInclusive="true" />
+            app:destination="@id/createContactFragment" />
         <action
             android:id="@+id/action_view"
-            app:destination="@id/viewContactFragment"
-            app:popUpTo="@+id/contactListFragment"
-            app:popUpToInclusive="true" />
+            app:destination="@id/viewContactFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/createContactFragment"
         android:name="com.example.phonebook.views.ui.fragments.CreateContactFragment"
@@ -30,25 +27,28 @@
             android:id="@+id/action_create_back"
             app:destination="@id/contactListFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/viewContactFragment"
         android:name="com.example.phonebook.views.ui.fragments.ViewContactFragment"
-        android:label="fragment_view_contact"
-        tools:layout="@layout/view_contact_fragment" >
+        android:label="view_contact_fragment"
+        tools:layout="@layout/view_contact_fragment">
         <action
             android:id="@+id/action_delete"
-            app:destination="@id/confirmDeletionDialogFragment" />
+            app:destination="@+id/confirmDeletionDialogFragment" />
         <action
             android:id="@+id/action_edit"
             app:destination="@id/createContactFragment" />
     </fragment>
+
     <dialog
         android:id="@+id/confirmDeletionDialogFragment"
         android:name="com.example.phonebook.views.ui.fragments.ConfirmDeletionFragment"
-        android:label="fragment_confirm_deletion"
+        android:label="confirm_deletion_fragment"
         tools:layout="@layout/confirm_deletion_fragment" >
         <action
             android:id="@+id/action_delete_back"
             app:destination="@id/contactListFragment" />
     </dialog>
+
 </navigation>

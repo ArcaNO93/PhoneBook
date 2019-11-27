@@ -31,12 +31,15 @@ public class ConfirmDeletionFragment extends DialogFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ConfirmDeletionFragmentBinding binding = DataBindingUtil.inflate(inflater, R.layout.confirm_deletion_fragment, container, false);
         Objects.requireNonNull(Objects.requireNonNull(getDialog()).getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
         binding.buttonCancelDeletion.setOnClickListener(v -> getDialog().dismiss());
+
         binding.buttonConfirmDeletion.setOnClickListener(v -> {
            mViewModel.deleteContact();
            NavDirections action = ConfirmDeletionFragmentDirections.actionDeleteBack();
            NavHostFragment.findNavController(this).navigate(action);
         });
+
         return binding.getRoot();
     }
 

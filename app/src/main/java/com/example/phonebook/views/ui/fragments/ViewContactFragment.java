@@ -32,6 +32,7 @@ public class ViewContactFragment extends Fragment {
         ViewContactFragmentBinding binding = DataBindingUtil.inflate(inflater, R.layout.view_contact_fragment, container, false);
         binding.setContact(mViewModel.getContact());
         requireActivity().invalidateOptionsMenu();
+
         return binding.getRoot();
     }
 

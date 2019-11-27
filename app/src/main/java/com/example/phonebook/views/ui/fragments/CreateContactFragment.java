@@ -24,19 +24,20 @@ import com.example.phonebook.viewModels.MainActivityViewModel;
 public class CreateContactFragment extends Fragment {
 
     public static final String TAG = "com.example.phonebook.views.fragments.CreateContactFragment";
-    private MainActivityViewModel viewModel;
+    private MainActivityViewModel mViewModel;
+    private Fragment fragment = this;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ContactCreationFragmentBinding binding = DataBindingUtil.inflate(inflater, R.layout.contact_creation_fragment, container, false);
-        binding.setContact(viewModel.getContact());
-        binding.setServiceCreate(viewModel);
+        binding.setContact(mViewModel.getContact());
+        binding.setServiceCreate(mViewModel);
 
         binding.contactCreateButton.setOnClickListener(contact -> {
-            if(viewModel.addContact()) {
+            if(mViewModel.addContact()) {
                 NavDirections action = CreateContactFragmentDirections.actionCreateBack();
-                NavHostFragment.findNavController(this).navigate(action);
+                NavHostFragment.findNavController(fragment).navigate(action);
             }
         });
 
@@ -46,7 +47,7 @@ public class CreateContactFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        viewModel = ViewModelProviders.of(requireActivity()).get(MainActivityViewModel.class);
+        mViewModel = ViewModelProviders.of(requireActivity()).get(MainActivityViewModel.class);
         setHasOptionsMenu(true);
     }
 
@@ -54,5 +55,10 @@ public class CreateContactFragment extends Fragment {
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         menu.clear();
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
     }
 }
