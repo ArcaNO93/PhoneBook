@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
+import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
@@ -46,14 +47,22 @@ public class ViewContactFragment extends Fragment {
     @Override
     public void onPrepareOptionsMenu(@NonNull Menu menu) {
         menu.findItem(R.id.menuActionSignOut).setVisible(false);
-        menu.findItem(R.id.createContactFragment).setVisible(true);
-        menu.findItem(R.id.confirmDeletionDialogFragment).setVisible(true);
+        menu.findItem(R.id.menuActionEdit).setVisible(true);
+        menu.findItem(R.id.menuActionDelete).setVisible(true);
         super.onPrepareOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        NavigationUI.onNavDestinationSelected(item, NavHostFragment.findNavController(this));
+        NavController navHostFragment = NavHostFragment.findNavController(this);
+        switch(item.getItemId()) {
+            case R.id.menuActionEdit:
+                navHostFragment.navigate(ViewContactFragmentDirections.actionEdit());
+                break;
+            case R.id.menuActionDelete:
+                navHostFragment.navigate(ViewContactFragmentDirections.actionDelete());
+        }
+
         return super.onOptionsItemSelected(item);
     }
 }

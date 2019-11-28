@@ -11,7 +11,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,29 +33,25 @@ public class ContactListFragment extends Fragment {
         super.onCreate(savedInstanceState);
         mContactAdapter = new ContactAdapter(mContactClickCallback);
         mViewModel = ViewModelProviders.of(requireActivity()).get(MainActivityViewModel.class);
-        mViewModel.init();
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ContactListFragmentBinding binding = DataBindingUtil.inflate(inflater, R.layout.contact_list_fragment, container, false);
+
         binding.setService(mViewModel);
         binding.phoneBook.setAdapter(mContactAdapter);
         binding.newContactButton.setOnClickListener(v -> NavHostFragment.findNavController(this).navigate(ContactListFragmentDirections.actionCreate()));
         mViewModel.setContact(new Contact());
-        return binding.getRoot();
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
 
         mViewModel.getCurrentContactList().observe(getViewLifecycleOwner(), contacts -> {
             if(contacts != null) {
                 mContactAdapter.updateContactList(contacts);
             }
         });
+
+        return binding.getRoot();
     }
 
     private final ContactClickCallback mContactClickCallback = (contact) -> {

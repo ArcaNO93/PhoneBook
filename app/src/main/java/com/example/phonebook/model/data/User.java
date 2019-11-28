@@ -24,9 +24,4 @@ public class User {
     public void setPassword(String _password) {
         this.password = _password;
     }
-
-    public void clean() {
-        setLogin("");
-        setPassword("");
-    }
 }

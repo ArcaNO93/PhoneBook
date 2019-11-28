@@ -17,17 +17,17 @@ public class RegisterViewModel extends AndroidViewModel {
     private User mUser;
     private UsersRepoShPref mRepo;
     private Context mContext;
-    private MutableLiveData<Boolean> registrationDone = new MutableLiveData<>();
+    private MutableLiveData<Boolean> mRegistrationDone = new MutableLiveData<>();
 
-    public RegisterViewModel(@NonNull Application _application) {
-        super(_application);
+    public RegisterViewModel(@NonNull Application application) {
+        super(application);
         mUser = new User();
-        mContext = _application.getApplicationContext();
-        mRepo = new UsersRepoShPref(_application);
+        mContext = application.getApplicationContext();
+        mRepo = new UsersRepoShPref(application);
     }
 
     public MutableLiveData<Boolean> getRegistrationDone() {
-        return registrationDone;
+        return mRegistrationDone;
     }
 
     public User getUser() {
@@ -51,7 +51,7 @@ public class RegisterViewModel extends AndroidViewModel {
                 return;
             }
             showToast(mContext, mContext.getString(R.string.user_creation_success));
-            registrationDone.setValue(true);
+            mRegistrationDone.setValue(true);
         }
     }
 

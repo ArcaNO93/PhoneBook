@@ -46,8 +46,7 @@ public class RegisterFragment extends Fragment {
 
         mViewModel.getRegistrationDone().observe(getViewLifecycleOwner(), registrationDone -> {
             if(registrationDone != null && registrationDone) {
-                NavDirections action = RegisterFragmentDirections.actionRegisterBack();
-                NavHostFragment.findNavController(this).navigate(action);
+                NavHostFragment.findNavController(this).navigate(RegisterFragmentDirections.actionRegisterBack());
             }
         });
     }

@@ -25,26 +25,26 @@ public class MainActivity extends AppCompatActivity {
         ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         binding.setLifecycleOwner(this);
         setSupportActionBar(binding.mainActivityToolbar);
+        mViewModel.init();
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
-        menu.findItem(R.id.createContactFragment).setVisible(false);
-        menu.findItem(R.id.confirmDeletionDialogFragment).setVisible(false);
+        menu.findItem(R.id.menuActionEdit).setVisible(false);
+        menu.findItem(R.id.menuActionDelete).setVisible(false);
         super.onCreateOptionsMenu(menu);
         return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem _item) {
-        int id = _item.getItemId();
-        switch (id) {
-            case R.id.menuActionSignOut:
-                mViewModel.signOut();
-                startActivity(new Intent(this, AuthorisationActivity.class));
-                finish();
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == R.id.menuActionSignOut) {
+            mViewModel.signOut();
+            startActivity(new Intent(this, AuthorisationActivity.class));
+            finish();
         }
+
         return false;
     }
 

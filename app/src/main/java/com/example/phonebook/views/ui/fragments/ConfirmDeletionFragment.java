@@ -1,5 +1,6 @@
 package com.example.phonebook.views.ui.fragments;
 
+import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -24,7 +25,6 @@ import java.util.Objects;
 public class ConfirmDeletionFragment extends DialogFragment {
 
     public static final String TAG = "com.example.phonebook.views.fragments.ConfirmDeletionFragment";
-
     private MainActivityViewModel mViewModel;
 
     @Override
@@ -48,4 +48,11 @@ public class ConfirmDeletionFragment extends DialogFragment {
         super.onCreate(savedInstanceState);
         mViewModel = ViewModelProviders.of(requireActivity()).get(MainActivityViewModel.class);
     }
+
+    @NonNull
+    @Override
+    public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
+        return super.onCreateDialog(savedInstanceState);
+    }
+
 }

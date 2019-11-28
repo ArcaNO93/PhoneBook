@@ -16,13 +16,13 @@ public class ServiceRepoShPref implements ServiceRepo{
     }
 
     @Override
-    public void setCurrentUser(String _currentUser) {
+    public void setCurrentUser(@NonNull String _currentUser) {
         mService.edit().putString("Current user", _currentUser).apply();
     }
 
     @Override
-    public void setSignedUp(boolean _flag) {
-        mService.edit().putBoolean("Signed up", _flag).apply();
+    public void setSignedUp(boolean flag) {
+        mService.edit().putBoolean("Signed up", flag).apply();
     }
 
     @Override

@@ -21,11 +21,10 @@ import com.example.phonebook.R;
 import com.example.phonebook.databinding.ContactCreationFragmentBinding;
 import com.example.phonebook.viewModels.MainActivityViewModel;
 
-public class CreateContactFragment extends Fragment {
+public class ContactCreationFragment extends Fragment {
 
-    public static final String TAG = "com.example.phonebook.views.fragments.CreateContactFragment";
+    public static final String TAG = "com.example.phonebook.views.fragments.ContactCreationFragment";
     private MainActivityViewModel mViewModel;
-    private Fragment fragment = this;
 
     @Nullable
     @Override
@@ -36,8 +35,8 @@ public class CreateContactFragment extends Fragment {
 
         binding.contactCreateButton.setOnClickListener(contact -> {
             if(mViewModel.addContact()) {
-                NavDirections action = CreateContactFragmentDirections.actionCreateBack();
-                NavHostFragment.findNavController(fragment).navigate(action);
+                NavDirections action = ContactCreationFragmentDirections.actionCreateBack();
+                NavHostFragment.findNavController(this).navigate(action);
             }
         });
 

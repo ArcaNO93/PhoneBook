@@ -12,20 +12,22 @@
         tools:layout="@layout/contact_list_fragment" >
         <action
             android:id="@+id/action_create"
-            app:destination="@id/createContactFragment" />
+            app:destination="@id/contactCreationFragment" />
         <action
             android:id="@+id/action_view"
             app:destination="@id/viewContactFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/createContactFragment"
-        android:name="com.example.phonebook.views.ui.fragments.CreateContactFragment"
+        android:id="@+id/contactCreationFragment"
+        android:name="com.example.phonebook.views.ui.fragments.ContactCreationFragment"
         android:label="fragment_contact_creation"
-        tools:layout="@layout/contact_creation_fragment" >
+        tools:layout="@layout/contact_creation_fragment">
         <action
             android:id="@+id/action_create_back"
-            app:destination="@id/contactListFragment" />
+            app:destination="@id/contactListFragment"
+            app:popUpTo="@+id/contactListFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 
     <fragment
@@ -35,20 +37,22 @@
         tools:layout="@layout/view_contact_fragment">
         <action
             android:id="@+id/action_delete"
-            app:destination="@+id/confirmDeletionDialogFragment" />
+            app:destination="@id/confirmDeletionFragment" />
         <action
             android:id="@+id/action_edit"
-            app:destination="@id/createContactFragment" />
+            app:destination="@id/contactCreationFragment" />
     </fragment>
 
     <dialog
-        android:id="@+id/confirmDeletionDialogFragment"
+        android:id="@+id/confirmDeletionFragment"
         android:name="com.example.phonebook.views.ui.fragments.ConfirmDeletionFragment"
         android:label="confirm_deletion_fragment"
         tools:layout="@layout/confirm_deletion_fragment" >
         <action
             android:id="@+id/action_delete_back"
-            app:destination="@id/contactListFragment" />
+            app:destination="@id/contactListFragment"
+            app:popUpTo="@+id/contactListFragment"
+            app:popUpToInclusive="true" />
     </dialog>
 
 </navigation>

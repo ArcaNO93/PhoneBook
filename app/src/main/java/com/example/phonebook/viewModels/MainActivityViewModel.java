@@ -45,10 +45,8 @@ public class MainActivityViewModel extends AndroidViewModel {
     }
 
     public void init() {
-        if(mCurrentContactList.isEmpty()) {
-            mCurrentContactList.addAll(mContactRepo.getAllContacts(mService.getCurrentUser()));
-            mContacts.postValue(mCurrentContactList);
-        }
+        mCurrentContactList.addAll(mContactRepo.getAllContacts(mService.getCurrentUser()));
+        mContacts.postValue(mCurrentContactList);
     }
 
     public boolean addContact() {
@@ -59,6 +57,7 @@ public class MainActivityViewModel extends AndroidViewModel {
         }
 
         Contact contact = new Contact();
+
         contact.setContactName(mContact.getContactName());
         contact.setContactPhone(mContact.getContactPhone());
         contact.setContactEmail(mContact.getContactEmail());
@@ -73,6 +72,7 @@ public class MainActivityViewModel extends AndroidViewModel {
 
         mContacts.postValue(mCurrentContactList);
         mContact.clean();
+
         return true;
     }
 
