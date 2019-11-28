@@ -79,6 +79,7 @@
                     android:text="@string/login_button_text" />
 
                 <Button
+                    android:id="@+id/toRegisterButton"
                     style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -87,8 +88,7 @@
                     android:textAlignment="center"
                     android:textColor="@android:color/white"
                     android:textSize="15sp"
-                    android:layout_gravity="center"
-                    android:onClick="@{()-> service.toRegister()}"/>
+                    android:layout_gravity="center" />
 
         </LinearLayout>
 </layout>

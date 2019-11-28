@@ -18,23 +18,24 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.phonebook.R;
-import com.example.phonebook.databinding.FragmentContactCreationBinding;
+import com.example.phonebook.databinding.ContactCreationFragmentBinding;
 import com.example.phonebook.viewModels.MainActivityViewModel;
 
-public class CreateContactFragment extends Fragment {
+public class ContactCreationFragment extends Fragment {
 
-    private MainActivityViewModel viewModel;
+    public static final String TAG = "com.example.phonebook.views.fragments.ContactCreationFragment";
+    private MainActivityViewModel mViewModel;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        FragmentContactCreationBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_contact_creation, container, false);
-        binding.setContact(viewModel.getContact());
-        binding.setServiceCreate(viewModel);
+        ContactCreationFragmentBinding binding = DataBindingUtil.inflate(inflater, R.layout.contact_creation_fragment, container, false);
+        binding.setContact(mViewModel.getContact());
+        binding.setServiceCreate(mViewModel);
 
         binding.contactCreateButton.setOnClickListener(contact -> {
-            if(viewModel.addContact()) {
-                NavDirections action = CreateContactFragmentDirections.actionCreateBack();
+            if(mViewModel.addContact()) {
+                NavDirections action = ContactCreationFragmentDirections.actionCreateBack();
                 NavHostFragment.findNavController(this).navigate(action);
             }
         });
@@ -45,7 +46,7 @@ public class CreateContactFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        viewModel = ViewModelProviders.of(requireActivity()).get(MainActivityViewModel.class);
+        mViewModel = ViewModelProviders.of(requireActivity()).get(MainActivityViewModel.class);
         setHasOptionsMenu(true);
     }
 

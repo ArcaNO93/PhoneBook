@@ -17,32 +17,34 @@ import com.example.phonebook.viewModels.MainActivityViewModel;
 public class MainActivity extends AppCompatActivity {
 
     private MainActivityViewModel mViewModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(MainActivityViewModel.class);
         ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        binding.setLifecycleOwner(this);
         setSupportActionBar(binding.mainActivityToolbar);
+        mViewModel.init();
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
-        menu.findItem(R.id.menuActionChange).setVisible(false);
-        menu.findItem(R.id.confirmDeletion).setVisible(false);
+        menu.findItem(R.id.menuActionEdit).setVisible(false);
+        menu.findItem(R.id.menuActionDelete).setVisible(false);
         super.onCreateOptionsMenu(menu);
         return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem _item) {
-        int id = _item.getItemId();
-        switch (id) {
-            case R.id.menuActionSignOut:
-                mViewModel.signOut();
-                setResult(RESULT_FIRST_USER, new Intent(this, AuthorisationActivity.class));
-                finish();
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == R.id.menuActionSignOut) {
+            mViewModel.signOut();
+            startActivity(new Intent(this, AuthorisationActivity.class));
+            finish();
         }
+
         return false;
     }
 
@@ -50,11 +52,5 @@ public class MainActivity extends AppCompatActivity {
     public void onPause() {
         super.onPause();
         mViewModel.save();
-    }
-
-    @Override
-    public void onBackPressed() {
-        setResult(RESULT_CANCELED, new Intent(this, AuthorisationActivity.class));
-        finish();
     }
 }

@@ -20,26 +20,21 @@ public class LogInViewModel extends AndroidViewModel {
     private UsersRepoShPref mUsersRepo;
     private ServiceRepoShPref mServiceRepo;
     private MutableLiveData<Boolean> isLogged = new MutableLiveData<>();
-    private MutableLiveData<Boolean> toRegister = new MutableLiveData<>(false);
 
-    public LogInViewModel(@NonNull Application _application) {
-        super(_application);
+    public LogInViewModel(@NonNull Application application) {
+        super(application);
         mUser = new User();
-        mContext = _application.getApplicationContext();
-        mUsersRepo = new UsersRepoShPref(_application);
-        mServiceRepo = new ServiceRepoShPref(_application);
-    }
-
-    public MutableLiveData<Boolean> getIsLogged() {
-        return isLogged;
-    }
-
-    public MutableLiveData<Boolean> getToRegister() {
-        return toRegister;
+        mContext = application.getApplicationContext();
+        mUsersRepo = new UsersRepoShPref(application);
+        mServiceRepo = new ServiceRepoShPref(application);
     }
 
     public User getUser() {
         return mUser;
+    }
+
+    public MutableLiveData<Boolean> getIsLogged() {
+        return isLogged;
     }
 
     public void setUser(User mUser) {
@@ -62,13 +57,8 @@ public class LogInViewModel extends AndroidViewModel {
         }
     }
 
-    private void showToast(Context _context, String _errorMassage) {
-        Toast mErrorNoLogin = Toast.makeText(_context, _errorMassage, Toast.LENGTH_SHORT);
+    private void showToast(Context context, String errorMassage) {
+        Toast mErrorNoLogin = Toast.makeText(context, errorMassage, Toast.LENGTH_SHORT);
         mErrorNoLogin.show();
     }
-
-    public void toRegister () {
-        toRegister.postValue(true);
-    }
-
 }

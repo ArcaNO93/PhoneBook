@@ -1,6 +1,5 @@
 package com.example.phonebook.views.ui.fragments;
 
-import androidx.activity.OnBackPressedCallback;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
 
@@ -10,7 +9,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavDirections;
-import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
@@ -26,10 +24,6 @@ public class RegisterFragment extends Fragment {
     private static final String TAG = "com.example.phonebook.views.fragments.RegisterFragment";
     private RegisterViewModel mViewModel;
 
-    public static RegisterFragment newInstance() {
-        return new RegisterFragment();
-    }
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,28 +37,17 @@ public class RegisterFragment extends Fragment {
         binding.setUser(mViewModel.getUser());
         binding.setService(mViewModel);
 
-        requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(),
-                new OnBackPressedCallback(true) {
-                    @Override
-                    public void handleOnBackPressed() {
-                        Navigation.findNavController(binding.getRoot()).navigateUp(); // TODO: not working, fix it
-                    }
-                });
-
         return binding.getRoot();
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel.getRegistrationDone().observe(this, registrationDone -> {
+
+        mViewModel.getRegistrationDone().observe(getViewLifecycleOwner(), registrationDone -> {
             if(registrationDone != null && registrationDone) {
-                NavDirections action = RegisterFragmentDirections.actionRegisterFragmentToLogInFragment();
-                NavHostFragment.findNavController(this).navigate(action);
+                NavHostFragment.findNavController(this).navigate(RegisterFragmentDirections.actionRegisterBack());
             }
         });
-
-
-
     }
 }

@@ -11,9 +11,9 @@ public class AuthorisationActivityViewModel extends AndroidViewModel {
 
     private ServiceRepoShPref mServiceRepo;
 
-    public AuthorisationActivityViewModel(@NonNull Application _application) {
-        super(_application);
-        mServiceRepo = new ServiceRepoShPref(_application);
+    public AuthorisationActivityViewModel(@NonNull Application application) {
+        super(application);
+        mServiceRepo = new ServiceRepoShPref(application);
     }
 
     public boolean init() {

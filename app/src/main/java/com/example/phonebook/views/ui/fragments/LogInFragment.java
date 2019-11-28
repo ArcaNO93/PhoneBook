@@ -21,16 +21,10 @@ import com.example.phonebook.databinding.LogInFragmentBinding;
 import com.example.phonebook.viewModels.LogInViewModel;
 import com.example.phonebook.views.ui.activities.MainActivity;
 
-import static com.example.phonebook.model.service.Flags.TO_MAIN;
-
 public class LogInFragment extends Fragment {
 
     public static final String TAG = "com.example.phonebook.views.fragments.LogInFragment";
     private LogInViewModel mViewModel;
-
-    public static LogInFragment newInstance() {
-        return new LogInFragment();
-    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -43,21 +37,21 @@ public class LogInFragment extends Fragment {
         LogInFragmentBinding binding = DataBindingUtil.inflate(inflater, R.layout.log_in_fragment, container, false);
         binding.setUser(mViewModel.getUser());
         binding.setService(mViewModel);
+
+        binding.toRegisterButton.setOnClickListener(v -> {
+            NavDirections action = LogInFragmentDirections.actionRegister();
+            NavHostFragment.findNavController(this).navigate(action);
+        });
+
         return binding.getRoot();
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
-        mViewModel.getIsLogged().observe(this, v -> startActivityForResult(new Intent(getActivity(), MainActivity.class), TO_MAIN));
-
-        mViewModel.getToRegister().observe(this, toRegister -> {
-            if(toRegister != null && toRegister) {
-                NavDirections action = LogInFragmentDirections.actionLogInFragmentToRegisterFragment();
-                NavHostFragment.findNavController(this).navigate(action);
-            }
+        mViewModel.getIsLogged().observe(this, isLogged -> {
+            if(isLogged != null && isLogged)
+                startActivity(new Intent(getActivity(), MainActivity.class));
         });
     }
-
 }

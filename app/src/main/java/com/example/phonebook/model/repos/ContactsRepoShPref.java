@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.example.phonebook.model.data.Contact;
 import com.example.phonebook.model.service.ObjectSerializer;
@@ -25,11 +26,11 @@ public class ContactsRepoShPref implements ContactsRepo {
 
     @SuppressWarnings("unchecked")
     @Override
-    public ArrayList<Contact> getAllContacts(String _currentUser) {
+    public ArrayList<Contact> getAllContacts(@NonNull String currentUser) {
         try {
             return new ArrayList<>((ArrayList<Contact>) ObjectSerializer
                     .deserialize(mContacts
-                            .getString(mUsers.getString(_currentUser, ""), ObjectSerializer.serialize(new ArrayList<>()))));
+                            .getString(mUsers.getString(currentUser, ""), ObjectSerializer.serialize(new ArrayList<>()))));
         } catch (IOException e) {
             e.printStackTrace();
             return null;
@@ -37,9 +38,9 @@ public class ContactsRepoShPref implements ContactsRepo {
     }
 
     @Override
-    public void saveContactList(String _user, ArrayList<Contact> _contactList) {
+    public void saveContactList(@NonNull String user, @Nullable ArrayList<Contact> contactList) {
         try {
-            mContacts.edit().putString(_user, ObjectSerializer.serialize(_contactList)).apply();
+            mContacts.edit().putString(user, ObjectSerializer.serialize(contactList)).apply();
         } catch (IOException e) {
             e.printStackTrace();
         }

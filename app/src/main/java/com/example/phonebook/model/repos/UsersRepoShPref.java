@@ -22,25 +22,25 @@ public class UsersRepoShPref implements UsersRepo {
     }
 
     @Override
-    public void addUser(String _userLogin, String _userPassword) throws IllegalArgumentException{
-        if(mUsers.contains(_userLogin)) {
+    public void addUser(@NonNull String userLogin, @NonNull String userPassword) throws IllegalArgumentException{
+        if(mUsers.contains(userLogin)) {
             throw new IllegalArgumentException(USER_EXISTS_ERROR);
         }
-        mUsers.edit().putString(_userLogin, _userPassword).apply();
+        mUsers.edit().putString(userLogin, userPassword).apply();
     }
 
     @Override
-    public void deleteUser(String _userLogin) throws NoSuchElementException {
-        if(mUsers.contains(_userLogin)) {
-            mUsers.edit().remove(_userLogin).apply();
+    public void deleteUser(@NonNull String userLogin) throws NoSuchElementException {
+        if(mUsers.contains(userLogin)) {
+            mUsers.edit().remove(userLogin).apply();
         }
         else throw new NoSuchElementException(NO_USER_ERROR);
     }
 
     @Override
-    public void updateUser(String _currentUser, String _newUserPassword) throws NoSuchElementException {
-        if(mUsers.contains(_currentUser)) {
-            mUsers.edit().putString(_currentUser, _newUserPassword).apply();
+    public void updateUser(@NonNull String currentUser, @NonNull String newUserPassword) throws NoSuchElementException {
+        if(mUsers.contains(currentUser)) {
+            mUsers.edit().putString(currentUser, newUserPassword).apply();
         }
         else throw new NoSuchElementException(NO_USER_ERROR);
     }
@@ -51,8 +51,8 @@ public class UsersRepoShPref implements UsersRepo {
     }
 
     @Override
-    public boolean verifyUser(String _user, String _userPassword) {
-        return mUsers.getString(_user, "").equals(_userPassword);
+    public boolean verifyUser(@NonNull String user, @NonNull String userPassword) {
+        return mUsers.getString(user, "").equals(userPassword);
     }
 
 }
