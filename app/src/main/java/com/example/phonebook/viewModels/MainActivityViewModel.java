@@ -24,12 +24,12 @@ public class MainActivityViewModel extends AndroidViewModel {
     private ArrayList<Contact> mCurrentContactList = new ArrayList<>();
     private MutableLiveData<ArrayList<Contact>> mContacts = new MutableLiveData<>();
 
-    public MainActivityViewModel(@NonNull Application _application) {
-        super(_application);
-        mContactRepo = new ContactsRepoShPref(_application);
-        mService = new ServiceRepoShPref(_application);
+    public MainActivityViewModel(@NonNull Application application) {
+        super(application);
+        mContactRepo = new ContactsRepoShPref(application);
+        mService = new ServiceRepoShPref(application);
         mContact = new Contact();
-        mContext = _application.getApplicationContext();
+        mContext = application.getApplicationContext();
     }
 
     public Contact getContact() {

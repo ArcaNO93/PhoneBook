@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.example.phonebook.model.data.Contact;
 import com.example.phonebook.model.service.ObjectSerializer;
@@ -37,7 +38,7 @@ public class ContactsRepoShPref implements ContactsRepo {
     }
 
     @Override
-    public void saveContactList(@NonNull String user, ArrayList<Contact> contactList) {
+    public void saveContactList(@NonNull String user, @Nullable ArrayList<Contact> contactList) {
         try {
             mContacts.edit().putString(user, ObjectSerializer.serialize(contactList)).apply();
         } catch (IOException e) {

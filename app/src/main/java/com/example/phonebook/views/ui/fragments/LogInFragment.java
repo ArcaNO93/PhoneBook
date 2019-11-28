@@ -48,10 +48,10 @@ public class LogInFragment extends Fragment {
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
         mViewModel.getIsLogged().observe(this, isLogged -> {
             if(isLogged != null && isLogged)
                 startActivity(new Intent(getActivity(), MainActivity.class));
         });
-        super.onActivityCreated(savedInstanceState);
     }
 }

@@ -16,8 +16,8 @@ public class ServiceRepoShPref implements ServiceRepo{
     }
 
     @Override
-    public void setCurrentUser(@NonNull String _currentUser) {
-        mService.edit().putString("Current user", _currentUser).apply();
+    public void setCurrentUser(@NonNull String currentUser) {
+        mService.edit().putString("Current user", currentUser).apply();
     }
 
     @Override
