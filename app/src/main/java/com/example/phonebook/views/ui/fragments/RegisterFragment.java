@@ -8,7 +8,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavDirections;
 import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
@@ -37,17 +36,23 @@ public class RegisterFragment extends Fragment {
         binding.setUser(mViewModel.getUser());
         binding.setService(mViewModel);
 
+        mViewModel.getRegistrationDone().observe(getViewLifecycleOwner(), registrationDone -> {
+            if(registrationDone != null && registrationDone) {
+                NavHostFragment.findNavController(this).navigate(RegisterFragmentDirections.actionRegisterBack());
+            }
+        });
+
         return binding.getRoot();
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+    }
 
-        mViewModel.getRegistrationDone().observe(getViewLifecycleOwner(), registrationDone -> {
-            if(registrationDone != null && registrationDone) {
-                NavHostFragment.findNavController(this).navigate(RegisterFragmentDirections.actionRegisterBack());
-            }
-        });
+    @Override
+    public void onPause() {
+        super.onPause();
+        mViewModel.clean();
     }
 }
