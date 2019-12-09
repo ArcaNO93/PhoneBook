@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavDirections;
 import androidx.navigation.fragment.NavHostFragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +31,14 @@ public class LogInFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(LogInViewModel.class);
+
+        mViewModel.getIsLogged().observe(this, isLogged -> {
+            if(isLogged != null && isLogged) {
+                Log.d("here", "a");
+                startActivity(new Intent(getActivity(), MainActivity.class));
+            }
+        });
+
     }
 
     @Override
@@ -49,9 +58,11 @@ public class LogInFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel.getIsLogged().observe(this, isLogged -> {
-            if(isLogged != null && isLogged)
-                startActivity(new Intent(getActivity(), MainActivity.class));
-        });
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mViewModel.clean();
     }
 }

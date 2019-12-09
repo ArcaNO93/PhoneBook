@@ -7,21 +7,28 @@ import android.content.SharedPreferences;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.example.phonebook.dagger.ComponentProvider;
 import com.example.phonebook.model.data.Contact;
 import com.example.phonebook.model.service.ObjectSerializer;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.inject.Inject;
+import javax.inject.Named;
+
 public class ContactsRepoShPref implements ContactsRepo {
 
-    private SharedPreferences mContacts;
-    private SharedPreferences mUsers;
+    @Inject
+    @Named("ContactsShP")
+    SharedPreferences mContacts;
 
-    public ContactsRepoShPref(@NonNull Application application) {
-        Context context = application.getApplicationContext();
-        mContacts = context.getSharedPreferences("ContactList", Context.MODE_PRIVATE);
-        mUsers = context.getSharedPreferences("Users", Context.MODE_PRIVATE);
+    @Inject
+    @Named("UsersShP")
+    SharedPreferences mUsers;
+
+    public ContactsRepoShPref() {
+        ComponentProvider.getInstance().getAppComponent().inject(this);
     }
 
     @SuppressWarnings("unchecked")

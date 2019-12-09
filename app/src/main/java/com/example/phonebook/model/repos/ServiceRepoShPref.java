@@ -1,18 +1,22 @@
 package com.example.phonebook.model.repos;
 
-import android.app.Application;
-import android.content.Context;
 import android.content.SharedPreferences;
 
 import androidx.annotation.NonNull;
 
-public class ServiceRepoShPref implements ServiceRepo{
+import com.example.phonebook.dagger.ComponentProvider;
 
-    private SharedPreferences mService;
+import javax.inject.Inject;
+import javax.inject.Named;
 
-    public ServiceRepoShPref(@NonNull Application application) {
-        Context context = application.getApplicationContext();
-        mService = context.getSharedPreferences("Service", Context.MODE_PRIVATE);
+public class ServiceRepoShPref implements ServiceRepo {
+
+    @Inject
+    @Named("ServiceShP")
+    SharedPreferences mService;
+
+    public ServiceRepoShPref() {
+        ComponentProvider.getInstance().getAppComponent().inject(this);
     }
 
     @Override

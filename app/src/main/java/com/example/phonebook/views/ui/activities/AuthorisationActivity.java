@@ -12,15 +12,18 @@ import com.example.phonebook.viewModels.AuthorisationActivityViewModel;
 
 public class AuthorisationActivity extends AppCompatActivity {
 
+    private AuthorisationActivityViewModel viewModel;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        AuthorisationActivityViewModel viewModel = ViewModelProviders.of(this).get(AuthorisationActivityViewModel.class);
 
+        viewModel = ViewModelProviders.of(this).get(AuthorisationActivityViewModel.class);
         if(viewModel.init()) {
             startActivity(new Intent(this, MainActivity.class));
             finish();
         }
+
         setContentView(R.layout.activity_authorisation);
     }
 }

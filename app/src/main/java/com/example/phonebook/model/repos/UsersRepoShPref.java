@@ -1,24 +1,28 @@
 package com.example.phonebook.model.repos;
 
-import android.app.Application;
-import android.content.Context;
 import android.content.SharedPreferences;
 
 import androidx.annotation.NonNull;
 
+import com.example.phonebook.dagger.ComponentProvider;
+
 import java.util.Map;
 import java.util.NoSuchElementException;
+
+import javax.inject.Inject;
+import javax.inject.Named;
 
 public class UsersRepoShPref implements UsersRepo {
 
     private static final String NO_USER_ERROR = "Can't find user";
     private static final String USER_EXISTS_ERROR = "User already exists";
 
-    private SharedPreferences mUsers;
+    @Inject
+    @Named("UsersShP")
+    SharedPreferences mUsers;
 
-    public UsersRepoShPref(@NonNull Application application){
-        Context context = application.getApplicationContext();
-        mUsers = context.getSharedPreferences("Users", Context.MODE_PRIVATE);
+    public UsersRepoShPref(){
+        ComponentProvider.getInstance().getAppComponent().inject(this);
     }
 
     @Override
