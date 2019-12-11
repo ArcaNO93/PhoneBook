@@ -1,13 +1,11 @@
 package com.example.phonebook.model.repos;
 
-import android.app.Application;
-import android.content.Context;
 import android.content.SharedPreferences;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.phonebook.dagger.ComponentProvider;
+import com.example.phonebook.utils.ComponentProvider;
 import com.example.phonebook.model.data.Contact;
 import com.example.phonebook.model.service.ObjectSerializer;
 

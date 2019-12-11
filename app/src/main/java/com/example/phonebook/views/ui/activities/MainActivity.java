@@ -12,6 +12,7 @@ import android.view.MenuItem;
 
 import com.example.phonebook.R;
 import com.example.phonebook.databinding.ActivityMainBinding;
+import com.example.phonebook.utils.ComponentProvider;
 import com.example.phonebook.viewModels.MainActivityViewModel;
 
 public class MainActivity extends AppCompatActivity {
@@ -51,5 +52,11 @@ public class MainActivity extends AppCompatActivity {
     public void onPause() {
         super.onPause();
         mViewModel.save();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        ComponentProvider.getInstance().removeActivityComponent();
     }
 }

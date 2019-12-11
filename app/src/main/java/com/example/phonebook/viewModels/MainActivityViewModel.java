@@ -3,11 +3,10 @@ package com.example.phonebook.viewModels;
 import android.app.Application;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
 
-import com.example.phonebook.dagger.ComponentProvider;
+import com.example.phonebook.utils.ComponentProvider;
 import com.example.phonebook.model.data.Contact;
 import com.example.phonebook.model.repos.ContactsRepoShPref;
 import com.example.phonebook.model.repos.ServiceRepoShPref;
@@ -16,7 +15,7 @@ import java.util.ArrayList;
 
 import javax.inject.Inject;
 
-public class MainActivityViewModel extends AndroidViewModel {
+public class MainActivityViewModel extends ViewModel {
 
     @Inject
     ContactsRepoShPref mContactRepo;
@@ -27,11 +26,13 @@ public class MainActivityViewModel extends AndroidViewModel {
     @Inject
     Contact mContact;
 
+    @Inject
+    Application application;
+
     private ArrayList<Contact> mCurrentContactList = new ArrayList<>();
     private MutableLiveData<ArrayList<Contact>> mContacts = new MutableLiveData<>();
 
-    public MainActivityViewModel(@NonNull Application application) {
-        super(application);
+    public MainActivityViewModel() {
         ComponentProvider.getInstance().addActivityComponent().inject(this);
     }
 
@@ -54,7 +55,7 @@ public class MainActivityViewModel extends AndroidViewModel {
 
     public boolean addContact() {
         if(mContact.getContactName().length() == 0) {
-            Toast mErrorNoName = Toast.makeText(getApplication().getApplicationContext(), "Contact is empty", Toast.LENGTH_SHORT);
+            Toast mErrorNoName = Toast.makeText(application, "Contact is empty", Toast.LENGTH_SHORT);
             mErrorNoName.show();
             return false;
         }

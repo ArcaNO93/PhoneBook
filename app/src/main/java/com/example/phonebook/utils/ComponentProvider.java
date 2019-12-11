@@ -1,11 +1,14 @@
-package com.example.phonebook.dagger;
+package com.example.phonebook.utils;
 
 import android.app.Application;
 
 import com.example.phonebook.dagger.components.AppComponent;
-import com.example.phonebook.dagger.components.DaggerAppComponent;
 import com.example.phonebook.dagger.components.ActivityComponent;
-import com.example.phonebook.dagger.modules.AppModule;
+import com.example.phonebook.dagger.components.DaggerAppComponent;
+import com.example.phonebook.dagger.modules.ContactModule;
+import com.example.phonebook.dagger.modules.ReposModule;
+import com.example.phonebook.dagger.modules.UserModule;
+
 
 import org.jetbrains.annotations.Contract;
 
@@ -24,7 +27,11 @@ public class ComponentProvider extends Application {
     public void onCreate() {
         super.onCreate();
         componentProvider = this;
-        appComponent = DaggerAppComponent.builder().appModule(new AppModule(this)).build();
+
+        appComponent = DaggerAppComponent
+                .builder()
+                .withApplication(this)
+                .build();
     }
 
     public AppComponent getAppComponent() {
@@ -32,12 +39,19 @@ public class ComponentProvider extends Application {
     }
 
     public ActivityComponent addActivityComponent() {
+
         if(activityComponent == null)
-            activityComponent = appComponent.addActivityComponent();
+            activityComponent = appComponent
+                    .activityComponentBuilder()
+                    .reposModule(new ReposModule())
+                    .contactsModule(new ContactModule())
+                    .userModule(new UserModule())
+                    .build();
+
         return activityComponent;
     }
 
-    public void removeActivityComponent(){
+        public void removeActivityComponent(){
         activityComponent = null;
     }
 }

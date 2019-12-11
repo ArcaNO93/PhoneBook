@@ -4,7 +4,6 @@ import com.example.phonebook.dagger.modules.ContactModule;
 import com.example.phonebook.dagger.modules.ReposModule;
 import com.example.phonebook.dagger.modules.UserModule;
 import com.example.phonebook.dagger.scopes.ActivitiesScope;
-import com.example.phonebook.viewModels.AuthorisationActivityViewModel;
 import com.example.phonebook.viewModels.LogInViewModel;
 import com.example.phonebook.viewModels.MainActivityViewModel;
 import com.example.phonebook.viewModels.RegisterViewModel;
@@ -15,8 +14,15 @@ import dagger.Subcomponent;
 @ActivitiesScope
 public interface ActivityComponent {
 
+    @Subcomponent.Builder
+    interface Builder {
+        ActivityComponent.Builder reposModule(ReposModule reposModule);
+        ActivityComponent.Builder userModule(UserModule userModule);
+        ActivityComponent.Builder contactsModule(ContactModule contactModule);
+        ActivityComponent build();
+    }
+
     void inject(LogInViewModel logInViewModel);
     void inject(RegisterViewModel registerViewModel);
-    void inject(AuthorisationActivityViewModel authorisationActivityViewModel);
     void inject(MainActivityViewModel mainActivityViewModel);
 }

@@ -4,7 +4,7 @@ import android.content.SharedPreferences;
 
 import androidx.annotation.NonNull;
 
-import com.example.phonebook.dagger.ComponentProvider;
+import com.example.phonebook.utils.ComponentProvider;
 
 import java.util.Map;
 import java.util.NoSuchElementException;

@@ -8,23 +8,28 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.phonebook.R;
-import com.example.phonebook.viewModels.AuthorisationActivityViewModel;
+import com.example.phonebook.utils.ComponentProvider;
+import com.example.phonebook.viewModels.LogInViewModel;
 
 public class AuthorisationActivity extends AppCompatActivity {
-
-    private AuthorisationActivityViewModel viewModel;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        viewModel = ViewModelProviders.of(this).get(AuthorisationActivityViewModel.class);
+        LogInViewModel viewModel = ViewModelProviders.of(this).get(LogInViewModel.class);
         if(viewModel.init()) {
             startActivity(new Intent(this, MainActivity.class));
             finish();
         }
 
         setContentView(R.layout.activity_authorisation);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        ComponentProvider.getInstance().removeActivityComponent();
     }
 }
 
