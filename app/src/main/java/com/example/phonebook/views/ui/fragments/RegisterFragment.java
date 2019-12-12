@@ -16,17 +16,25 @@ import android.view.ViewGroup;
 
 import com.example.phonebook.R;
 import com.example.phonebook.databinding.RegisterFragmentBinding;
+import com.example.phonebook.utils.ComponentProvider;
+import com.example.phonebook.utils.ViewModelFactory;
 import com.example.phonebook.viewModels.RegisterViewModel;
+
+import javax.inject.Inject;
 
 public class RegisterFragment extends Fragment {
 
     private static final String TAG = "com.example.phonebook.views.fragments.RegisterFragment";
+
+    @Inject
+    ViewModelFactory mViewModelFactory;
     private RegisterViewModel mViewModel;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(RegisterViewModel.class);
+        ComponentProvider.getInstance().addAuthActViewModelsComponent().inject(this);
+        mViewModel = ViewModelProviders.of(this, mViewModelFactory).get(RegisterViewModel.class);
     }
 
     @Override

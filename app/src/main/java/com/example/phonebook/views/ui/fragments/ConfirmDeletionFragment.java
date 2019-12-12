@@ -18,13 +18,20 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.phonebook.R;
 import com.example.phonebook.databinding.ConfirmDeletionFragmentBinding;
+import com.example.phonebook.utils.ComponentProvider;
+import com.example.phonebook.utils.ViewModelFactory;
 import com.example.phonebook.viewModels.MainActivityViewModel;
 
 import java.util.Objects;
 
+import javax.inject.Inject;
+
 public class ConfirmDeletionFragment extends DialogFragment {
 
     public static final String TAG = "com.example.phonebook.views.fragments.ConfirmDeletionFragment";
+
+    @Inject
+    ViewModelFactory mViewModelFactory;
     private MainActivityViewModel mViewModel;
 
     @Override
@@ -46,7 +53,8 @@ public class ConfirmDeletionFragment extends DialogFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mViewModel = ViewModelProviders.of(requireActivity()).get(MainActivityViewModel.class);
+        ComponentProvider.getInstance().addMainActViewModelsComponent().inject(this);
+        mViewModel = ViewModelProviders.of(this, mViewModelFactory).get(MainActivityViewModel.class);
     }
 
     @NonNull

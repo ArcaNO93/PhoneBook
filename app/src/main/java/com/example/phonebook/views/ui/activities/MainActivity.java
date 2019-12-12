@@ -12,19 +12,28 @@ import android.view.MenuItem;
 
 import com.example.phonebook.R;
 import com.example.phonebook.databinding.ActivityMainBinding;
+import com.example.phonebook.utils.ComponentProvider;
+import com.example.phonebook.utils.ViewModelFactory;
 import com.example.phonebook.viewModels.MainActivityViewModel;
+
+import javax.inject.Inject;
 
 public class MainActivity extends AppCompatActivity {
 
+    @Inject
+    ViewModelFactory mViewModelFactory;
     private MainActivityViewModel mViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(MainActivityViewModel.class);
+        ComponentProvider.getInstance().addMainActViewModelsComponent().inject(this);
+
+        mViewModel = ViewModelProviders.of(this, mViewModelFactory).get(MainActivityViewModel.class);
         ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         binding.setLifecycleOwner(this);
         setSupportActionBar(binding.mainActivityToolbar);
+
         mViewModel.init();
     }
 
@@ -51,5 +60,11 @@ public class MainActivity extends AppCompatActivity {
     public void onPause() {
         super.onPause();
         mViewModel.save();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        ComponentProvider.getInstance().removeMainActViewModelsComponent();
     }
 }

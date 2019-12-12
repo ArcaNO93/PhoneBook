@@ -1,14 +1,20 @@
 package com.example.phonebook.model.data;
 
+import com.example.phonebook.dagger.scopes.ActivitiesScope;
+
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.UUID;
 
+import javax.inject.Inject;
+
+@ActivitiesScope
 public class Contact implements Serializable {
 
     private String ID;
     private HashMap<String, String> attributes = new HashMap<>();
 
+    @Inject
     public Contact() {
         ID = UUID.randomUUID().toString();
         attributes.put("Name", "");

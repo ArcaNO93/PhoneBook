@@ -4,7 +4,8 @@ import android.content.SharedPreferences;
 
 import androidx.annotation.NonNull;
 
-import com.example.phonebook.dagger.ComponentProvider;
+import com.example.phonebook.dagger.scopes.ActivitiesScope;
+import com.example.phonebook.utils.ComponentProvider;
 
 import java.util.Map;
 import java.util.NoSuchElementException;
@@ -12,6 +13,7 @@ import java.util.NoSuchElementException;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+@ActivitiesScope
 public class UsersRepoShPref implements UsersRepo {
 
     private static final String NO_USER_ERROR = "Can't find user";
@@ -21,6 +23,7 @@ public class UsersRepoShPref implements UsersRepo {
     @Named("UsersShP")
     SharedPreferences mUsers;
 
+    @Inject
     public UsersRepoShPref(){
         ComponentProvider.getInstance().getAppComponent().inject(this);
     }

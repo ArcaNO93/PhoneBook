@@ -19,20 +19,28 @@ import com.example.phonebook.R;
 import com.example.phonebook.databinding.ContactListFragmentBinding;
 import com.example.phonebook.model.data.Contact;
 import com.example.phonebook.model.service.ContactClickCallback;
+import com.example.phonebook.utils.ComponentProvider;
+import com.example.phonebook.utils.ViewModelFactory;
 import com.example.phonebook.viewModels.MainActivityViewModel;
 import com.example.phonebook.views.adapters.ContactAdapter;
+
+import javax.inject.Inject;
 
 public class ContactListFragment extends Fragment {
 
     public static final String TAG = "com.example.phonebook.views.fragments.ContactListFragment";
     private ContactAdapter mContactAdapter;
+
+    @Inject
+    ViewModelFactory mViewModelFactory;
     private MainActivityViewModel mViewModel;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ComponentProvider.getInstance().addMainActViewModelsComponent().inject(this);
+        mViewModel = ViewModelProviders.of(this, mViewModelFactory).get(MainActivityViewModel.class);
         mContactAdapter = new ContactAdapter(mContactClickCallback);
-        mViewModel = ViewModelProviders.of(requireActivity()).get(MainActivityViewModel.class);
     }
 
     @Nullable
@@ -45,7 +53,7 @@ public class ContactListFragment extends Fragment {
         binding.newContactButton.setOnClickListener(v -> NavHostFragment.findNavController(this).navigate(ContactListFragmentDirections.actionCreate()));
         mViewModel.setContact(new Contact());
 
-        mViewModel.getCurrentContactList().observe(getViewLifecycleOwner(), contacts -> {
+        mViewModel.getCurrentContactList().observe(this, contacts -> {
             if(contacts != null) {
                 mContactAdapter.updateContactList(contacts);
             }

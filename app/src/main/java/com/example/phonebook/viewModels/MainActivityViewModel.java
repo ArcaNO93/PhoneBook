@@ -1,13 +1,12 @@
 package com.example.phonebook.viewModels;
 
 import android.app.Application;
+
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
 
-import com.example.phonebook.dagger.ComponentProvider;
 import com.example.phonebook.model.data.Contact;
 import com.example.phonebook.model.repos.ContactsRepoShPref;
 import com.example.phonebook.model.repos.ServiceRepoShPref;
@@ -16,23 +15,24 @@ import java.util.ArrayList;
 
 import javax.inject.Inject;
 
-public class MainActivityViewModel extends AndroidViewModel {
+public class MainActivityViewModel extends ViewModel {
+
+    private ContactsRepoShPref mContactRepo;
+    private ServiceRepoShPref mServiceRepo;
+    private Contact mContact;
+    private Application mApplication;
+
+    private ArrayList<Contact> mCurrentContactList;
+    private MutableLiveData<ArrayList<Contact>> mContacts;
 
     @Inject
-    ContactsRepoShPref mContactRepo;
-
-    @Inject
-    ServiceRepoShPref mService;
-
-    @Inject
-    Contact mContact;
-
-    private ArrayList<Contact> mCurrentContactList = new ArrayList<>();
-    private MutableLiveData<ArrayList<Contact>> mContacts = new MutableLiveData<>();
-
-    public MainActivityViewModel(@NonNull Application application) {
-        super(application);
-        ComponentProvider.getInstance().addActivityComponent().inject(this);
+    public MainActivityViewModel(ContactsRepoShPref contactsRepo, ServiceRepoShPref serviceRepo, Contact contact, Application application) {
+        mContactRepo = contactsRepo;
+        mServiceRepo = serviceRepo;
+        mContact = contact;
+        mApplication = application;
+        mCurrentContactList = new ArrayList<>();
+        mContacts = new MutableLiveData<>();
     }
 
     public Contact getContact() {
@@ -48,13 +48,13 @@ public class MainActivityViewModel extends AndroidViewModel {
     }
 
     public void init() {
-        mCurrentContactList.addAll(mContactRepo.getAllContacts(mService.getCurrentUser()));
+        mCurrentContactList.addAll(mContactRepo.getAllContacts(mServiceRepo.getCurrentUser()));
         mContacts.postValue(mCurrentContactList);
     }
 
     public boolean addContact() {
         if(mContact.getContactName().length() == 0) {
-            Toast mErrorNoName = Toast.makeText(getApplication().getApplicationContext(), "Contact is empty", Toast.LENGTH_SHORT);
+            Toast mErrorNoName = Toast.makeText(mApplication, "Contact is empty", Toast.LENGTH_SHORT);
             mErrorNoName.show();
             return false;
         }
@@ -86,10 +86,10 @@ public class MainActivityViewModel extends AndroidViewModel {
     }
 
     public void signOut() {
-        mService.setSignedUp(false);
+        mServiceRepo.setSignedUp(false);
     }
 
     public void save() {
-        mContactRepo.saveContactList(mService.getCurrentUser(), mCurrentContactList);
+        mContactRepo.saveContactList(mServiceRepo.getCurrentUser(), mCurrentContactList);
     }
 }

@@ -1,9 +1,15 @@
 package com.example.phonebook.model.data;
 
+import com.example.phonebook.dagger.scopes.ActivitiesScope;
+
+import javax.inject.Inject;
+
+@ActivitiesScope
 public class User {
     private String login;
     private String password;
 
+    @Inject
     public User() {
         login = "";
         password = "";

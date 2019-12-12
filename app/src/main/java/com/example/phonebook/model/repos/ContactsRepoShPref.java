@@ -1,13 +1,12 @@
 package com.example.phonebook.model.repos;
 
-import android.app.Application;
-import android.content.Context;
 import android.content.SharedPreferences;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.phonebook.dagger.ComponentProvider;
+import com.example.phonebook.dagger.scopes.ActivitiesScope;
+import com.example.phonebook.utils.ComponentProvider;
 import com.example.phonebook.model.data.Contact;
 import com.example.phonebook.model.service.ObjectSerializer;
 
@@ -17,6 +16,7 @@ import java.util.ArrayList;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+@ActivitiesScope
 public class ContactsRepoShPref implements ContactsRepo {
 
     @Inject
@@ -27,6 +27,7 @@ public class ContactsRepoShPref implements ContactsRepo {
     @Named("UsersShP")
     SharedPreferences mUsers;
 
+    @Inject
     public ContactsRepoShPref() {
         ComponentProvider.getInstance().getAppComponent().inject(this);
     }
