@@ -76,6 +76,5 @@ public class Contact implements Serializable {
         attributes.put("Phone", "");
         attributes.put("Email", "");
         attributes.put("Address", "");
-        attributes.put("ID", ID);
     }
 }

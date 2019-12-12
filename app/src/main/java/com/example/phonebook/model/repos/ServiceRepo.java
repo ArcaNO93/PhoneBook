@@ -1,8 +1,8 @@
 package com.example.phonebook.model.repos;
 
 interface ServiceRepo {
-    void setCurrentUser(String _currentUser);
-    void setSignedUp(boolean _flag);
+    void setCurrentUser(String currentUser);
+    void setSignedUp(boolean flag);
     String getCurrentUser();
     boolean getSignedUp();
 }
