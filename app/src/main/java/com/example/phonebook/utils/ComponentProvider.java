@@ -3,12 +3,9 @@ package com.example.phonebook.utils;
 import android.app.Application;
 
 import com.example.phonebook.dagger.components.AppComponent;
-import com.example.phonebook.dagger.components.ActivityComponent;
+import com.example.phonebook.dagger.components.AuthActViewModelsComponent;
 import com.example.phonebook.dagger.components.DaggerAppComponent;
-import com.example.phonebook.dagger.modules.ContactModule;
-import com.example.phonebook.dagger.modules.ReposModule;
-import com.example.phonebook.dagger.modules.UserModule;
-
+import com.example.phonebook.dagger.components.MainActViewModelsComponent;
 
 import org.jetbrains.annotations.Contract;
 
@@ -16,7 +13,8 @@ public class ComponentProvider extends Application {
 
     protected static ComponentProvider componentProvider;
     private AppComponent appComponent;
-    private ActivityComponent activityComponent;
+    private AuthActViewModelsComponent authActViewModelsComponent;
+    private MainActViewModelsComponent mainActViewModelsComponent;
 
     @Contract(pure = true)
     public static ComponentProvider getInstance() {
@@ -38,20 +36,31 @@ public class ComponentProvider extends Application {
         return appComponent;
     }
 
-    public ActivityComponent addActivityComponent() {
+    public AuthActViewModelsComponent addAuthActViewModelsComponent() {
 
-        if(activityComponent == null)
-            activityComponent = appComponent
-                    .activityComponentBuilder()
-                    .reposModule(new ReposModule())
-                    .contactsModule(new ContactModule())
-                    .userModule(new UserModule())
+        if(authActViewModelsComponent == null)
+            authActViewModelsComponent = appComponent
+                    .authActViewModelsComponent()
                     .build();
 
-        return activityComponent;
+        return authActViewModelsComponent;
     }
 
-        public void removeActivityComponent(){
-        activityComponent = null;
+    public void removeAuthActViewModelsComponent() {
+        authActViewModelsComponent = null;
+    }
+
+    public MainActViewModelsComponent addMainActViewModelsComponent() {
+
+        if(mainActViewModelsComponent == null)
+            mainActViewModelsComponent = appComponent
+                    .mainActViewModelsComponent()
+                    .build();
+
+        return mainActViewModelsComponent;
+    }
+
+    public void removeMainActViewModelsComponent() {
+        mainActViewModelsComponent = null;
     }
 }

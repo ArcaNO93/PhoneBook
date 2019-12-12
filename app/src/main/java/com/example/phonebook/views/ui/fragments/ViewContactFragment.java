@@ -20,11 +20,18 @@ import android.view.ViewGroup;
 
 import com.example.phonebook.R;
 import com.example.phonebook.databinding.ViewContactFragmentBinding;
+import com.example.phonebook.utils.ComponentProvider;
+import com.example.phonebook.utils.ViewModelFactory;
 import com.example.phonebook.viewModels.MainActivityViewModel;
+
+import javax.inject.Inject;
 
 public class ViewContactFragment extends Fragment {
 
     public static final String TAG = "com.example.phonebook.views.fragments.ViewContactFragment";
+
+    @Inject
+    ViewModelFactory mViewModelFactory;
     private MainActivityViewModel mViewModel;
 
     @Override
@@ -39,7 +46,8 @@ public class ViewContactFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mViewModel = ViewModelProviders.of(requireActivity()).get(MainActivityViewModel.class);
+        ComponentProvider.getInstance().addMainActViewModelsComponent().inject(this);
+        mViewModel = ViewModelProviders.of(this, mViewModelFactory).get(MainActivityViewModel.class);
         setHasOptionsMenu(true);
     }
 
@@ -60,6 +68,7 @@ public class ViewContactFragment extends Fragment {
                 break;
             case R.id.menuActionDelete:
                 navHostFragment.navigate(ViewContactFragmentDirections.actionDelete());
+                break;
         }
 
         return super.onOptionsItemSelected(item);

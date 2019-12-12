@@ -14,7 +14,8 @@ import dagger.Component;
 @Component(modules = {AppModule.class})
 @GlobalScope
 public interface AppComponent {
-    ActivityComponent.Builder activityComponentBuilder();
+    AuthActViewModelsComponent.Builder authActViewModelsComponent();
+    MainActViewModelsComponent.Builder mainActViewModelsComponent();
 
     @Component.Builder
     interface Builder {

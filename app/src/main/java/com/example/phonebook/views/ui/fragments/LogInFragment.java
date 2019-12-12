@@ -19,22 +19,30 @@ import android.view.ViewGroup;
 
 import com.example.phonebook.R;
 import com.example.phonebook.databinding.LogInFragmentBinding;
+import com.example.phonebook.utils.ComponentProvider;
+import com.example.phonebook.utils.ViewModelFactory;
 import com.example.phonebook.viewModels.LogInViewModel;
 import com.example.phonebook.views.ui.activities.MainActivity;
+
+import javax.inject.Inject;
 
 public class LogInFragment extends Fragment {
 
     public static final String TAG = "com.example.phonebook.views.fragments.LogInFragment";
+
+    @Inject
+    ViewModelFactory viewModelFactory;
     private LogInViewModel mViewModel;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(LogInViewModel.class);
+        ComponentProvider.getInstance().addAuthActViewModelsComponent().inject(this);
+
+        mViewModel = ViewModelProviders.of(this, viewModelFactory).get(LogInViewModel.class);
 
         mViewModel.getIsLogged().observe(this, isLogged -> {
             if(isLogged != null && isLogged) {
-                Log.d("here", "a");
                 startActivity(new Intent(getActivity(), MainActivity.class));
             }
         });

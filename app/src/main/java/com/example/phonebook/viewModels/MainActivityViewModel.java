@@ -1,12 +1,12 @@
 package com.example.phonebook.viewModels;
 
 import android.app.Application;
+
 import android.widget.Toast;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.phonebook.utils.ComponentProvider;
 import com.example.phonebook.model.data.Contact;
 import com.example.phonebook.model.repos.ContactsRepoShPref;
 import com.example.phonebook.model.repos.ServiceRepoShPref;
@@ -17,23 +17,22 @@ import javax.inject.Inject;
 
 public class MainActivityViewModel extends ViewModel {
 
-    @Inject
-    ContactsRepoShPref mContactRepo;
+    private ContactsRepoShPref mContactRepo;
+    private ServiceRepoShPref mServiceRepo;
+    private Contact mContact;
+    private Application mApplication;
+
+    private ArrayList<Contact> mCurrentContactList;
+    private MutableLiveData<ArrayList<Contact>> mContacts;
 
     @Inject
-    ServiceRepoShPref mService;
-
-    @Inject
-    Contact mContact;
-
-    @Inject
-    Application application;
-
-    private ArrayList<Contact> mCurrentContactList = new ArrayList<>();
-    private MutableLiveData<ArrayList<Contact>> mContacts = new MutableLiveData<>();
-
-    public MainActivityViewModel() {
-        ComponentProvider.getInstance().addActivityComponent().inject(this);
+    public MainActivityViewModel(ContactsRepoShPref contactsRepo, ServiceRepoShPref serviceRepo, Contact contact, Application application) {
+        mContactRepo = contactsRepo;
+        mServiceRepo = serviceRepo;
+        mContact = contact;
+        mApplication = application;
+        mCurrentContactList = new ArrayList<>();
+        mContacts = new MutableLiveData<>();
     }
 
     public Contact getContact() {
@@ -49,13 +48,13 @@ public class MainActivityViewModel extends ViewModel {
     }
 
     public void init() {
-        mCurrentContactList.addAll(mContactRepo.getAllContacts(mService.getCurrentUser()));
+        mCurrentContactList.addAll(mContactRepo.getAllContacts(mServiceRepo.getCurrentUser()));
         mContacts.postValue(mCurrentContactList);
     }
 
     public boolean addContact() {
         if(mContact.getContactName().length() == 0) {
-            Toast mErrorNoName = Toast.makeText(application, "Contact is empty", Toast.LENGTH_SHORT);
+            Toast mErrorNoName = Toast.makeText(mApplication, "Contact is empty", Toast.LENGTH_SHORT);
             mErrorNoName.show();
             return false;
         }
@@ -87,10 +86,10 @@ public class MainActivityViewModel extends ViewModel {
     }
 
     public void signOut() {
-        mService.setSignedUp(false);
+        mServiceRepo.setSignedUp(false);
     }
 
     public void save() {
-        mContactRepo.saveContactList(mService.getCurrentUser(), mCurrentContactList);
+        mContactRepo.saveContactList(mServiceRepo.getCurrentUser(), mCurrentContactList);
     }
 }
