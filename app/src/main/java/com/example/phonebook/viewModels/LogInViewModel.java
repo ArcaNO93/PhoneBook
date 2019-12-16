@@ -10,7 +10,9 @@ import com.example.phonebook.R;
 import com.example.phonebook.dagger.scopes.ActivitiesScope;
 import com.example.phonebook.model.data.User;
 import com.example.phonebook.model.repos.ServiceRepoShPref;
-import com.example.phonebook.model.repos.UsersRepoShPref;
+import com.example.phonebook.model.repos.UsersRepoByRoom;
+
+import java.util.Objects;
 
 import javax.inject.Inject;
 
@@ -18,13 +20,13 @@ import javax.inject.Inject;
 public class LogInViewModel extends ViewModel {
 
     private User mUser;
-    private UsersRepoShPref mUsersRepo;
+    private UsersRepoByRoom mUsersRepo;
     private ServiceRepoShPref mServiceRepo;
     private Application mApplication;
     private MutableLiveData<Boolean> isLogged;
 
     @Inject
-    public LogInViewModel(User user, UsersRepoShPref usersRepo, ServiceRepoShPref serviceRepo, Application application) {
+    public LogInViewModel(User user, UsersRepoByRoom usersRepo, ServiceRepoShPref serviceRepo, Application application) {
         mUser = user;
         mUsersRepo = usersRepo;
         mServiceRepo = serviceRepo;
@@ -49,9 +51,9 @@ public class LogInViewModel extends ViewModel {
             showToast(mApplication.getString(R.string.error_empty_login));
         } else if (mUser.getPassword().length() == 0) {
             showToast(mApplication.getString(R.string.error_empty_password));
-        } else if (mUsersRepo.getAllUsers().get(mUser.getLogin()) == null) {
+        } else if (mUsersRepo.getUser(mUser.getLogin()) == null) {
             showToast(mApplication.getString(R.string.error_account_does_not_exist));
-        } else if (!(mUsersRepo.verifyUser(mUser.getLogin(), mUser.getPassword()))) {
+        } else if (!(Objects.requireNonNull(mUsersRepo.getUser(mUser.getLogin())).getPassword().equals(mUser.getPassword()))) {
             showToast(mApplication.getString(R.string.error_wrong_password));
         } else {
             mServiceRepo.setCurrentUser(mUser.getLogin());

@@ -4,9 +4,9 @@ import android.app.Application;
 
 import com.example.phonebook.dagger.modules.AppModule;
 import com.example.phonebook.dagger.scopes.GlobalScope;
-import com.example.phonebook.model.repos.ContactsRepoShPref;
+import com.example.phonebook.model.repos.ContactsRepoByRoom;
 import com.example.phonebook.model.repos.ServiceRepoShPref;
-import com.example.phonebook.model.repos.UsersRepoShPref;
+import com.example.phonebook.model.repos.UsersRepoByRoom;
 
 import dagger.BindsInstance;
 import dagger.Component;
@@ -25,7 +25,7 @@ public interface AppComponent {
 
     }
 
-    void inject(ContactsRepoShPref contactsRepoShPref);
-    void inject(ServiceRepoShPref serviceRepoShPref);
-    void inject(UsersRepoShPref usersRepoShPref);
+    void inject(ContactsRepoByRoom contactsRepo);
+    void inject(ServiceRepoShPref serviceRepo);
+    void inject(UsersRepoByRoom usersRepo);
 }

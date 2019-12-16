@@ -1,15 +1,29 @@
 package com.example.phonebook.model.data;
 
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import com.example.phonebook.dagger.scopes.ActivitiesScope;
 
 import java.util.UUID;
 
 import javax.inject.Inject;
 
+@Entity(tableName = "users")
 @ActivitiesScope
 public class User {
+
+    @PrimaryKey
+    @ColumnInfo(name = "user_id")
+    @NonNull
     private String  ID;
+
+    @ColumnInfo(name = "user_login")
     private String login;
+
+    @ColumnInfo(name = "user_password")
     private String password;
 
     @Inject
@@ -19,6 +33,11 @@ public class User {
         password = "";
     }
 
+    public void setID(@NonNull String _ID) {
+        this.ID = _ID;
+    }
+
+    @NonNull
     public String getID() {
         return ID;
     }

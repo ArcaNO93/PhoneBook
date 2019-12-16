@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,9 +45,9 @@ public class RegisterFragment extends Fragment {
         binding.setUser(mViewModel.getUser());
         binding.setService(mViewModel);
 
-        mViewModel.getRegistrationDone().observe(getViewLifecycleOwner(), registrationDone -> {
+        mViewModel.getRegistrationDone().observe(this, registrationDone -> {
             if(registrationDone != null && registrationDone) {
-                NavHostFragment.findNavController(this).navigate(RegisterFragmentDirections.actionRegisterBack());
+                NavHostFragment.findNavController(this).navigateUp();
             }
         });
 
@@ -54,13 +55,14 @@ public class RegisterFragment extends Fragment {
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-    }
-
-    @Override
     public void onPause() {
         super.onPause();
         mViewModel.clean();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        ComponentProvider.getInstance().removeAuthActViewModelsComponent();
     }
 }
