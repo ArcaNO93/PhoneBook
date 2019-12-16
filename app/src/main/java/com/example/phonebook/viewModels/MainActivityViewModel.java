@@ -8,7 +8,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.phonebook.model.data.Contact;
-import com.example.phonebook.model.repos.ContactsRepoShPref;
+import com.example.phonebook.model.repos.ContactsRepoByRoom;
 import com.example.phonebook.model.repos.ServiceRepoShPref;
 
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ import javax.inject.Inject;
 
 public class MainActivityViewModel extends ViewModel {
 
-    private ContactsRepoShPref mContactRepo;
+    private ContactsRepoByRoom mContactRepo;
     private ServiceRepoShPref mServiceRepo;
     private Contact mContact;
     private Application mApplication;
@@ -26,7 +26,7 @@ public class MainActivityViewModel extends ViewModel {
     private MutableLiveData<ArrayList<Contact>> mContacts;
 
     @Inject
-    public MainActivityViewModel(ContactsRepoShPref contactsRepo, ServiceRepoShPref serviceRepo, Contact contact, Application application) {
+    public MainActivityViewModel(ContactsRepoByRoom contactsRepo, ServiceRepoShPref serviceRepo, Contact contact, Application application) {
         mContactRepo = contactsRepo;
         mServiceRepo = serviceRepo;
         mContact = contact;
@@ -48,7 +48,8 @@ public class MainActivityViewModel extends ViewModel {
     }
 
     public void init() {
-        mCurrentContactList.addAll(mContactRepo.getAllContacts(mServiceRepo.getCurrentUser()));
+        if(mContactRepo.getContactList(mServiceRepo.getCurrentUser()) != null)
+            mCurrentContactList.addAll(mContactRepo.getContactList(mServiceRepo.getCurrentUser()));
         mContacts.postValue(mCurrentContactList);
     }
 

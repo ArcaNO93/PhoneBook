@@ -4,7 +4,11 @@ import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import androidx.room.Room;
+
 import com.example.phonebook.dagger.scopes.GlobalScope;
+import com.example.phonebook.model.db.UsersContactListsDB;
+import com.example.phonebook.model.db.UsersDB;
 
 import javax.inject.Named;
 
@@ -23,15 +27,13 @@ public class AppModule {
 
     @Provides
     @GlobalScope
-    @Named("UsersShP")
-    public SharedPreferences provideUsersSharedPref(Application application) {
-        return application.getSharedPreferences("Users", Context.MODE_PRIVATE);
+    public UsersContactListsDB provideUsersContactListsDB(Application application) {
+        return Room.databaseBuilder(application, UsersContactListsDB.class, "usersContactLists.db").build();
     }
 
     @Provides
     @GlobalScope
-    @Named("ContactsShP")
-    public SharedPreferences provideContactsSharedPref(Application application) {
-        return application.getSharedPreferences("ContactList", Context.MODE_PRIVATE);
+    public UsersDB provideUsersDB(Application application) {
+        return Room.databaseBuilder(application, UsersDB.class, "users.db").build();
     }
 }

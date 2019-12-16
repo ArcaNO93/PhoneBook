@@ -38,7 +38,6 @@ public class LogInFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ComponentProvider.getInstance().addAuthActViewModelsComponent().inject(this);
-
         mViewModel = ViewModelProviders.of(this, viewModelFactory).get(LogInViewModel.class);
 
         mViewModel.getIsLogged().observe(this, isLogged -> {
@@ -46,7 +45,6 @@ public class LogInFragment extends Fragment {
                 startActivity(new Intent(getActivity(), MainActivity.class));
             }
         });
-
     }
 
     @Override
@@ -56,21 +54,21 @@ public class LogInFragment extends Fragment {
         binding.setService(mViewModel);
 
         binding.toRegisterButton.setOnClickListener(v -> {
-            NavDirections action = LogInFragmentDirections.actionRegister();
-            NavHostFragment.findNavController(this).navigate(action);
+            NavHostFragment.findNavController(this).navigate(LogInFragmentDirections.actionRegister());
         });
 
         return binding.getRoot();
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-    }
-
-    @Override
     public void onPause() {
         super.onPause();
         mViewModel.clean();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        ComponentProvider.getInstance().removeAuthActViewModelsComponent();
     }
 }
