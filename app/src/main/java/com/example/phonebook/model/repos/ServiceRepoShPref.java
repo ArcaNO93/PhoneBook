@@ -1,7 +1,6 @@
 package com.example.phonebook.model.repos;
 
 import android.content.SharedPreferences;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 
@@ -9,13 +8,11 @@ import com.example.phonebook.dagger.scopes.ActivitiesScope;
 import com.example.phonebook.utils.ComponentProvider;
 
 import javax.inject.Inject;
-import javax.inject.Named;
 
 @ActivitiesScope
 public class ServiceRepoShPref implements ServiceRepo {
 
     @Inject
-    @Named("ServiceShP")
     SharedPreferences mService;
 
     @Inject

@@ -10,8 +10,6 @@ import com.example.phonebook.dagger.scopes.GlobalScope;
 import com.example.phonebook.model.db.UsersContactListsDB;
 import com.example.phonebook.model.db.UsersDB;
 
-import javax.inject.Named;
-
 import dagger.Module;
 import dagger.Provides;
 
@@ -20,7 +18,6 @@ public class AppModule {
 
     @Provides
     @GlobalScope
-    @Named("ServiceShP")
     public SharedPreferences provideServiceSharedPref(Application application) {
         return application.getSharedPreferences("Service", Context.MODE_PRIVATE);
     }
