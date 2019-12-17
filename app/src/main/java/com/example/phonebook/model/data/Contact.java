@@ -60,7 +60,6 @@ public class Contact implements Serializable {
         attributes.put("Address", _address);
     }
 
-    @org.jetbrains.annotations.Contract(value = "null -> false", pure = true)
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
