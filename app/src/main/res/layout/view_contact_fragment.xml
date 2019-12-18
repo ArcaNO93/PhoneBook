@@ -16,6 +16,7 @@
             android:id="@+id/contactViewPanel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -26,7 +27,7 @@
                 android:id="@+id/contactViewName"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="20dp">
+                android:layout_marginBottom="30dp">
 
                 <TextView
                     android:id="@+id/contactViewNameText"
@@ -35,16 +36,16 @@
                     android:gravity="center"
                     android:text="@string/add_contact_form_name"
                     android:textColor="#000000"
-                    android:textSize="14sp" />
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/contactViewNameTextBox"
-                    android:layout_width="215dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="@{contact.contactName}"
                     android:textColor="@android:color/background_dark"
-                    android:textSize="18sp" />
+                    android:textSize="25sp" />
 
             </TableRow>
 
@@ -52,7 +53,7 @@
                 android:id="@+id/contactViewPhone"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="20dp">
+                android:layout_marginBottom="30dp">
 
                 <TextView
                     android:id="@+id/contactViewPhoneText"
@@ -61,7 +62,7 @@
                     android:gravity="center"
                     android:text="@string/add_contact_form_phone"
                     android:textColor="#000000"
-                    android:textSize="14sp" />
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/contactViewPhoneTextBox"
@@ -70,7 +71,7 @@
                     android:gravity="center"
                     android:text="@{contact.contactPhone}"
                     android:textColor="@android:color/background_dark"
-                    android:textSize="18sp" />
+                    android:textSize="25sp" />
 
             </TableRow>
 
@@ -78,7 +79,7 @@
                 android:id="@+id/contactViewEmail"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="20dp">
+                android:layout_marginBottom="30dp">
 
                 <TextView
                     android:id="@+id/contactViewEmailText"
@@ -87,7 +88,7 @@
                     android:gravity="center"
                     android:text="@string/add_contact_form_email"
                     android:textColor="#000000"
-                    android:textSize="14sp" />
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/contactVewEmailTextBox"
@@ -96,11 +97,11 @@
                     android:gravity="center"
                     android:text="@{contact.contactEmail}"
                     android:textColor="@android:color/background_dark"
-                    android:textSize="18sp" />
+                    android:textSize="25sp" />
             </TableRow>
 
             <TableRow
-                android:id="@+id/contactViewAddres"
+                android:id="@+id/contactViewAddress"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
@@ -111,16 +112,16 @@
                     android:gravity="center"
                     android:text="@string/add_contact_form_address"
                     android:textColor="#000000"
-                    android:textSize="14sp" />
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/contactViewAddressTextBox"
-                    android:layout_width="215dp"
+                    android:layout_width="215sp"
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="@{contact.contactAddress}"
                     android:textColor="@android:color/background_dark"
-                    android:textSize="18sp" />
+                    android:textSize="25sp" />
 
             </TableRow>
 

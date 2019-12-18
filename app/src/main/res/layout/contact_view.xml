@@ -12,16 +12,19 @@
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="@{() -> callback.onClick(contact)}">
+        android:onClick="@{() -> callback.onClick(contact)}"
+        android:background="@drawable/rounded_shape_with_black_border"
+        android:layout_margin="5dp"
+        android:padding="5dp">
 
         <TextView
             android:id="@+id/contactListName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
             android:text="@{contact.contactName}"
             android:textColor="@android:color/holo_red_dark"
-            android:textSize="35sp" />
+            android:textSize="35sp"
+            android:layout_margin="5dp" />
 
         <TextView
             android:id="@+id/contactListPhone"
@@ -30,7 +33,8 @@
             android:layout_marginStart="5dp"
             android:text="@{contact.contactPhone}"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="25sp" />
+            android:textSize="25sp"
+            android:layout_margin="5dp" />
 
     </TableLayout>
 </layout>
