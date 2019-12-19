@@ -63,6 +63,7 @@
                 android:textColorLink="@android:color/white"
                 android:textCursorDrawable="@drawable/edit_text_cursor"
                 android:text="@={user.password}"
+                android:imeOptions="actionDone"
                 app:backgroundTint="@android:color/white" />
 
             <androidx.appcompat.widget.AppCompatButton

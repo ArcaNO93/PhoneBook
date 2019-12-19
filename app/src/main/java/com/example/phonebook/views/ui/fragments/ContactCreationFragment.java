@@ -2,6 +2,7 @@ package com.example.phonebook.views.ui.fragments;
 
 import androidx.annotation.NonNull;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -11,17 +12,21 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavDirections;
 import androidx.navigation.fragment.NavHostFragment;
 
+import android.os.IBinder;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 
 import com.example.phonebook.R;
 import com.example.phonebook.databinding.ContactCreationFragmentBinding;
 import com.example.phonebook.utils.ComponentProvider;
 import com.example.phonebook.utils.ViewModelFactory;
 import com.example.phonebook.viewModels.MainActivityViewModel;
+
+import java.util.Objects;
 
 import javax.inject.Inject;
 
@@ -42,6 +47,13 @@ public class ContactCreationFragment extends Fragment {
 
         binding.contactCreateButton.setOnClickListener(contact -> {
             if(mViewModel.addContact()) {
+                View tmp = requireActivity().getCurrentFocus();
+
+                if(tmp != null) {
+                    InputMethodManager inputManager = (InputMethodManager) requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    Objects.requireNonNull(inputManager).hideSoftInputFromWindow(tmp.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+                }
+
                 NavDirections action = ContactCreationFragmentDirections.actionCreateBack();
                 NavHostFragment.findNavController(this).navigate(action);
             }
