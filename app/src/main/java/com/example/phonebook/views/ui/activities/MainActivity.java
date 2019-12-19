@@ -28,12 +28,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ComponentProvider.getInstance().addMainActViewModelsComponent().inject(this);
-
         mViewModel = ViewModelProviders.of(this, mViewModelFactory).get(MainActivityViewModel.class);
         ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         binding.setLifecycleOwner(this);
         setSupportActionBar(binding.mainActivityToolbar);
+    }
 
+    @Override
+    public void onStart() {
+        super.onStart();
         mViewModel.init();
     }
 
@@ -57,8 +60,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onPause() {
-        super.onPause();
+    public void onStop() {
+        super.onStop();
         mViewModel.save();
     }
 
