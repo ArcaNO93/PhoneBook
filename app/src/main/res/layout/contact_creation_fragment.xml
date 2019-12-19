@@ -97,7 +97,7 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/contactCreateAdressText"
+                    android:id="@+id/contactCreateAddressText"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -110,14 +110,8 @@
                     android:ems="10"
                     android:importantForAutofill="no"
                     android:inputType="text"
+                    android:imeOptions="actionDone"
                     android:text="@={contact.contactAddress}" />
-
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_horizontal">
 
             </TableRow>
 

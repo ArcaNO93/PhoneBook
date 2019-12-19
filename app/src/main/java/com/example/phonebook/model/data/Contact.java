@@ -3,7 +3,6 @@ package com.example.phonebook.model.data;
 import com.example.phonebook.dagger.scopes.ActivitiesScope;
 
 import java.io.Serializable;
-import java.util.HashMap;
 import java.util.UUID;
 
 import javax.inject.Inject;
@@ -12,16 +11,18 @@ import javax.inject.Inject;
 public class Contact implements Serializable {
 
     private String ID;
-    private HashMap<String, String> attributes = new HashMap<>();
+    private String contactName;
+    private String contactPhone;
+    private String contactEmail;
+    private String contactAddress;
 
     @Inject
     public Contact() {
         ID = UUID.randomUUID().toString();
-        attributes.put("Name", "");
-        attributes.put("Phone", "");
-        attributes.put("Email", "");
-        attributes.put("Address", "");
-        attributes.put("ID", ID);
+        contactName = "";
+        contactPhone = "";
+        contactEmail = "";
+        contactAddress = "";
     }
 
     public String getID() {
@@ -29,35 +30,35 @@ public class Contact implements Serializable {
     }
 
     public String getContactName() {
-        return attributes.get("Name");
+        return contactName;
     }
 
     public String getContactPhone() {
-        return attributes.get("Phone");
+        return contactPhone;
     }
 
     public String getContactEmail() {
-        return attributes.get("Email");
+        return contactEmail;
     }
 
     public String getContactAddress() {
-        return attributes.get("Address");
+        return contactAddress;
     }
 
     public void setContactName(String _name) {
-        attributes.put("Name", _name);
+        contactName = _name;
     }
 
     public void setContactPhone(String _phone) {
-        attributes.put("Phone", _phone);
+        contactPhone = _phone;
     }
 
     public void setContactEmail(String _email) {
-        attributes.put("Email", _email);
+        contactEmail = _email;
     }
 
     public void setContactAddress(String _address) {
-        attributes.put("Address", _address);
+        contactAddress = _address;
     }
 
     @Override
@@ -65,15 +66,14 @@ public class Contact implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Contact contact = (Contact) o;
-        if (ID.equals(contact.ID))
-            return false;
-        return attributes.equals(contact.attributes);
+        return ID.equals(contact.ID);
+
     }
 
     public void clean() {
-        attributes.put("Name", "");
-        attributes.put("Phone", "");
-        attributes.put("Email", "");
-        attributes.put("Address", "");
+        contactName = "";
+        contactPhone = "";
+        contactEmail = "";
+        contactAddress = "";
     }
 }
