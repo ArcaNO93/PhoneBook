@@ -12,10 +12,10 @@ import com.example.phonebook.model.data.UsersContactLists
 interface UsersContactsListsDAO {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertContactsList(list: UsersContactLists): Long
+    fun insertContactsList(list: UsersContactLists)
 
     @Query("SELECT * FROM usersContactLists WHERE user_login = :userLogin")
-    fun getContactList(userLogin: String): UsersContactLists
+    fun getContactList(userLogin: String): UsersContactLists?
 
     @Delete
     fun deleteContactList(list: UsersContactLists )
