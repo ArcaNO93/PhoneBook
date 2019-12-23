@@ -19,17 +19,17 @@ abstract class ViewModelsModule {
     @IntoMap
     @ActivitiesScope
     @ViewModelKeys(LogInViewModel::class)
-    abstract fun provideLogInViewModel(logInViewModel: LogInViewModel): ViewModel
+    internal abstract fun provideLogInViewModel(logInViewModel: LogInViewModel): ViewModel
 
     @Binds
     @IntoMap
     @ActivitiesScope
     @ViewModelKeys(MainActivityViewModel::class)
-    abstract fun provideMainActivityViewModel( mainActivityViewModel: MainActivityViewModel): ViewModel
+    internal abstract fun provideMainActivityViewModel(mainActivityViewModel: MainActivityViewModel): ViewModel
 
     @Binds
     @IntoMap
     @ActivitiesScope
     @ViewModelKeys(RegisterViewModel::class)
-    abstract fun provideRegisterViewModel(registerViewModel: RegisterViewModel ): ViewModel
+    internal abstract fun provideRegisterViewModel(registerViewModel: RegisterViewModel ): ViewModel
 }
