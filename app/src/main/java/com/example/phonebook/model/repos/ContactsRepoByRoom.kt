@@ -14,7 +14,7 @@ import javax.inject.Inject
 class ContactsRepoByRoom @Inject constructor() : ContactsRepo {
 
     init {
-        ComponentProvider.getAppComponent()?.inject(this)
+        ComponentProvider.getInstance().appComponent.inject(this)
     }
 
     @Inject

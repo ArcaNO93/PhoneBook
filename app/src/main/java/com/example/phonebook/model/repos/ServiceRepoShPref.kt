@@ -11,7 +11,7 @@ import javax.inject.Inject
 class ServiceRepoShPref @Inject constructor() : ServiceRepo {
 
     init {
-        ComponentProvider.getAppComponent()?.inject(this)
+        ComponentProvider.getInstance().appComponent.inject(this)
     }
 
     @Inject

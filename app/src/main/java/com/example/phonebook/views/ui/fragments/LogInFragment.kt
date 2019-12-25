@@ -30,7 +30,7 @@ class LogInFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        ComponentProvider.addAuthActViewModelsComponent()?.inject(this)
+        ComponentProvider.getInstance().addAuthActViewModelsComponent().inject(this)
         mViewModel = ViewModelProviders.of(this, viewModelFactory).get(LogInViewModel::class.java)
 
         mViewModel.isLogged.observe(this, Observer { isLogged ->
@@ -58,6 +58,6 @@ class LogInFragment : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-        ComponentProvider.removeAuthActViewModelsComponent()
+        ComponentProvider.getInstance().removeAuthActViewModelsComponent()
     }
 }

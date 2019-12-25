@@ -28,7 +28,7 @@ class RegisterFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        ComponentProvider.addAuthActViewModelsComponent()?.inject(this)
+        ComponentProvider.getInstance().addAuthActViewModelsComponent().inject(this)
         mViewModel = ViewModelProviders.of(this, mViewModelFactory).get(RegisterViewModel::class.java)
     }
 
@@ -53,6 +53,6 @@ class RegisterFragment : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-        ComponentProvider.removeAuthActViewModelsComponent()
+        ComponentProvider.getInstance().removeAuthActViewModelsComponent()
     }
 }

@@ -24,6 +24,6 @@ interface AppComponent {
     }
 
     fun inject(contactsRepo: ContactsRepoByRoom)
-    fun inject(serviceRepo: ServiceRepoShPref )
-    fun inject(usersRepo: UsersRepoByRoom )
+    fun inject(serviceRepo: ServiceRepoShPref)
+    fun inject(usersRepo: UsersRepoByRoom)
 }

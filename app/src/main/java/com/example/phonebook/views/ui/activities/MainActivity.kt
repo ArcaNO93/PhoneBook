@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        ComponentProvider.addMainActViewModelsComponent()?.inject(this)
+        ComponentProvider.getInstance().addMainActViewModelsComponent().inject(this)
         mViewModel = ViewModelProviders.of(this, mViewModelFactory).get(MainActivityViewModel::class.java)
         val binding: ActivityMainBinding  = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.lifecycleOwner = this
@@ -60,6 +60,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        ComponentProvider.removeMainActViewModelsComponent()
+        ComponentProvider.getInstance().removeMainActViewModelsComponent()
     }
 }

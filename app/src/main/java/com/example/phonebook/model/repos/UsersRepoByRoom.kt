@@ -12,7 +12,7 @@ import javax.inject.Inject
 class UsersRepoByRoom @Inject constructor() : UsersRepo {
 
     init {
-        ComponentProvider.getAppComponent()?.inject(this)
+        ComponentProvider.getInstance().appComponent.inject(this)
     }
 
     @Inject

@@ -38,7 +38,7 @@ class ViewContactFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        ComponentProvider.addMainActViewModelsComponent()?.inject(this)
+        ComponentProvider.getInstance().addMainActViewModelsComponent()!!.inject(this)
         mViewModel = ViewModelProviders.of(this, mViewModelFactory).get(MainActivityViewModel::class.java)
         setHasOptionsMenu(true)
     }

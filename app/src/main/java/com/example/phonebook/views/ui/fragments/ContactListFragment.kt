@@ -5,6 +5,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProviders
 
 import android.os.Bundle
+import android.util.Log
 
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
@@ -34,13 +35,14 @@ class ContactListFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        ComponentProvider.addMainActViewModelsComponent()?.inject(this)
+        ComponentProvider.getInstance().addMainActViewModelsComponent()!!.inject(this)
         mViewModel = ViewModelProviders.of(this, mViewModelFactory).get(MainActivityViewModel::class.java)
 
         mContactAdapter = ContactAdapter(object : ContactClickCallback {
             override fun onClick(contact: Contact) {
                 if (lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)) {
                     mViewModel.mContact = contact
+
                     NavHostFragment.findNavController(getInstance()).navigate(ContactListFragmentDirections.actionView())
                 }
             }
@@ -67,9 +69,7 @@ class ContactListFragment : Fragment() {
         return binding.root
     }
 
-    companion object {
-        fun getInstance(): ContactListFragment {
-            return ContactListFragment()
-        }
+    private fun getInstance(): ContactListFragment {
+        return this
     }
 }
