@@ -43,7 +43,7 @@ class ContactListFragment : Fragment() {
                 if (lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)) {
                     mViewModel.mContact = contact
 
-                    NavHostFragment.findNavController(getInstance()).navigate(ContactListFragmentDirections.actionView())
+                    NavHostFragment.findNavController(this@ContactListFragment).navigate(ContactListFragmentDirections.actionView())
                 }
             }
         })
@@ -69,7 +69,4 @@ class ContactListFragment : Fragment() {
         return binding.root
     }
 
-    private fun getInstance(): ContactListFragment {
-        return this
-    }
 }
