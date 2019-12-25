@@ -9,21 +9,21 @@ import androidx.lifecycle.ViewModelProviders
 import com.example.phonebook.R
 import com.example.phonebook.utils.ComponentProvider
 import com.example.phonebook.utils.ViewModelFactory
-import com.example.phonebook.viewModels.LogInViewModel
+import com.example.phonebook.viewModels.AuthorisationActivityViewModel
 
 import javax.inject.Inject
 
 class AuthorisationActivity : AppCompatActivity() {
 
     @Inject lateinit var viewModelFactory : ViewModelFactory
-    private lateinit var logInViewModel: LogInViewModel
+    private lateinit var authorisationActivityViewModel: AuthorisationActivityViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         ComponentProvider.getInstance().addAuthActViewModelsComponent().inject(this)
 
-        logInViewModel = ViewModelProviders.of(this, viewModelFactory).get(LogInViewModel::class.java)
-        if(logInViewModel.init()) {
+        authorisationActivityViewModel = ViewModelProviders.of(this, viewModelFactory).get(AuthorisationActivityViewModel::class.java)
+        if(authorisationActivityViewModel.init()) {
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         }
