@@ -42,8 +42,6 @@ class LogInViewModel
         }
     }
 
-    fun init() = mServiceRepo.getSignedUp()
-
     private fun showToast(errorMassage: String) = Toast.makeText(mApplication, errorMassage, Toast.LENGTH_SHORT).show()
 
     fun clean() = mUser.clean()
