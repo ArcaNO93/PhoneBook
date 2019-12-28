@@ -1,14 +1,9 @@
 package com.example.phonebook.dagger.modules
 
 import androidx.lifecycle.ViewModel
-
 import com.example.phonebook.dagger.scopes.ActivitiesScope
 import com.example.phonebook.dagger.scopes.ViewModelKeys
-import com.example.phonebook.viewModels.AuthorisationActivityViewModel
-import com.example.phonebook.viewModels.LogInViewModel
-import com.example.phonebook.viewModels.MainActivityViewModel
-import com.example.phonebook.viewModels.RegisterViewModel
-
+import com.example.phonebook.ui.viewModels.*
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -25,8 +20,14 @@ abstract class ViewModelsModule {
     @Binds
     @IntoMap
     @ActivitiesScope
-    @ViewModelKeys(MainActivityViewModel::class)
-    internal abstract fun provideMainActivityViewModel(mainActivityViewModel: MainActivityViewModel): ViewModel
+    @ViewModelKeys(ContactCreationViewModel::class)
+    internal abstract fun provideContactCreationViewModel(contactCreationViewModel: ContactCreationViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ActivitiesScope
+    @ViewModelKeys(ContactListViewModel::class)
+    internal abstract fun provideContactListViewModel(contactListViewModel: ContactListViewModel): ViewModel
 
     @Binds
     @IntoMap
@@ -37,8 +38,13 @@ abstract class ViewModelsModule {
     @Binds
     @IntoMap
     @ActivitiesScope
-    @ViewModelKeys(RegisterViewModel::class)
-    internal abstract fun provideRegisterViewModel(registerViewModel: RegisterViewModel ): ViewModel
+    @ViewModelKeys(MainActivityViewModel::class)
+    internal abstract fun provideMainActivityViewModel(mainActivityViewModel: MainActivityViewModel): ViewModel
 
+    @Binds
+    @IntoMap
+    @ActivitiesScope
+    @ViewModelKeys(RegisterViewModel::class)
+    internal abstract fun provideRegisterViewModel(registerViewModel: RegisterViewModel): ViewModel
 
 }

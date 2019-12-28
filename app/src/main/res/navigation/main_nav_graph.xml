@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/contactListFragment"
-        android:name="com.example.phonebook.views.ui.fragments.ContactListFragment"
+        android:name="com.example.phonebook.ui.fragments.ContactListFragment"
         android:label="contact_list_fragment"
-        tools:layout="@layout/contact_list_fragment" >
+        tools:layout="@layout/contact_list" >
         <action
             android:id="@+id/action_create"
             app:destination="@id/contactCreationFragment" />
@@ -20,9 +20,9 @@
 
     <fragment
         android:id="@+id/contactCreationFragment"
-        android:name="com.example.phonebook.views.ui.fragments.ContactCreationFragment"
+        android:name="com.example.phonebook.ui.fragments.ContactCreationFragment"
         android:label="fragment_contact_creation"
-        tools:layout="@layout/contact_creation_fragment">
+        tools:layout="@layout/contact_creation">
         <action
             android:id="@+id/action_create_back"
             app:destination="@id/contactListFragment"
@@ -32,27 +32,38 @@
 
     <fragment
         android:id="@+id/viewContactFragment"
-        android:name="com.example.phonebook.views.ui.fragments.ViewContactFragment"
+        android:name="com.example.phonebook.ui.fragments.ViewContactFragment"
         android:label="view_contact_fragment"
-        tools:layout="@layout/view_contact_fragment">
+        tools:layout="@layout/view_contact">
         <action
             android:id="@+id/action_delete"
-            app:destination="@id/confirmDeletionFragment" />
+            app:destination="@id/contactDeletionFragment" />
         <action
             android:id="@+id/action_edit"
-            app:destination="@id/contactCreationFragment" />
+            app:destination="@id/contactEditFragment" />
     </fragment>
 
     <dialog
-        android:id="@+id/confirmDeletionFragment"
-        android:name="com.example.phonebook.views.ui.fragments.ConfirmDeletionFragment"
+        android:id="@+id/contactDeletionFragment"
+        android:name="com.example.phonebook.ui.fragments.ContactDeletionFragment"
         android:label="confirm_deletion_fragment"
-        tools:layout="@layout/confirm_deletion_fragment" >
+        tools:layout="@layout/confirm_deletion" >
         <action
             android:id="@+id/action_delete_back"
             app:destination="@id/contactListFragment"
             app:popUpTo="@+id/contactListFragment"
             app:popUpToInclusive="true" />
     </dialog>
+
+    <fragment
+        android:id="@+id/contactEditFragment"
+        android:name="com.example.phonebook.ui.fragments.ContactEditFragment"
+        android:label="ContactEditFragment" >
+        <action
+            android:id="@+id/action_edit_back"
+            app:destination="@id/contactListFragment"
+            app:popUpTo="@+id/contactListFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 
 </navigation>
