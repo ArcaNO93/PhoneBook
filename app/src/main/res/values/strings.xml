@@ -10,10 +10,10 @@
     <string name="add_contact_form_email">E-MAIL:</string>
     <string name="add_contact_form_address">ADDRESS: </string>
 
-    <string name="contact_name_hint">Enter name</string>
-    <string name="contact_phone_hint">Enter phone</string>
-    <string name="contact_email_hint">Enter email</string>
-    <string name="contact_address_hint">Enter address</string>
+    <string name="contact_name_hint">CONTACT NAME</string>
+    <string name="contact_phone_hint">CONTACT PHONE</string>
+    <string name="contact_email_hint">CONTACT EMAIL</string>
+    <string name="contact_address_hint">CONTACT ADDRESS</string>
 
     <string name="contact_name">Contact Name</string>
     <string name="contact_phone">Contact Phone</string>
@@ -23,14 +23,11 @@
     <string name="delete_confirmation_text">Confirm deletion</string>
 
     <string name="title_activity_login">LoginActivity</string>
-    <string name="login_activity_welcome_text">Welcome to Phone Book!\nPlease sign in.</string>
     <string name="login_form_login_text">LOGIN:</string>
     <string name="login_form_password_text">PASSWORD:</string>
     <string name="login_button_text">SIGN IN</string>
     <string name="sign_up_button_text">Do not have an account? Sign up</string>
 
-    <string name="title_activity_create_user">SignUpActivity</string>
-    <string name="create_user_activity_welcome_text">Enter unique\nLOGIN and PASSWORD:</string>
     <string name="create_user_form_login_text">LOGIN:</string>
     <string name="create_user_form_password_text">PASSWORD:</string>
     <string name="create_user_button_text">SIGN UP</string>
@@ -48,4 +45,6 @@
     <string name="menu_item_change_text">Change</string>
     <string name="confirm_deletion_text">Confirm deletion</string>
 
+    <string name="add_contact_text">ADD \n CONTACT</string>
+    <string name="edit_contact_text">EDIT \n CONTACT</string>
 </resources>

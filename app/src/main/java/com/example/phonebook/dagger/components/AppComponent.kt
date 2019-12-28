@@ -4,9 +4,9 @@ import android.app.Application
 
 import com.example.phonebook.dagger.modules.AppModule
 import com.example.phonebook.dagger.scopes.GlobalScope
-import com.example.phonebook.model.repos.ContactsRepoByRoom
-import com.example.phonebook.model.repos.ServiceRepoShPref
-import com.example.phonebook.model.repos.UsersRepoByRoom
+import com.example.phonebook.data.repos.ContactsRepoByRoom
+import com.example.phonebook.data.repos.ServiceRepoShPref
+import com.example.phonebook.data.repos.UsersRepoByRoom
 
 import dagger.BindsInstance
 import dagger.Component
@@ -14,8 +14,8 @@ import dagger.Component
 @Component(modules = [AppModule::class])
 @GlobalScope
 interface AppComponent {
-    fun authActViewModelsComponent(): AuthActViewModelsComponent.Builder
-    fun mainActViewModelsComponent(): MainActViewModelsComponent.Builder
+    fun authComponent(): AuthComponent.Builder
+    fun mainComponent(): MainComponent.Builder
 
     @Component.Builder
     interface Builder {

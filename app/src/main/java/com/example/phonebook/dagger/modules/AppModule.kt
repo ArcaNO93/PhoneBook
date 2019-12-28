@@ -7,8 +7,8 @@ import android.content.SharedPreferences
 import androidx.room.Room
 
 import com.example.phonebook.dagger.scopes.GlobalScope
-import com.example.phonebook.model.db.UsersContactListsDB
-import com.example.phonebook.model.db.UsersDB
+import com.example.phonebook.data.room.db.UsersContactListsDB
+import com.example.phonebook.data.room.db.UsersDB
 
 import dagger.Module
 import dagger.Provides
@@ -24,7 +24,7 @@ class AppModule {
 
     @Provides
     @GlobalScope
-    fun  provideUsersContactListsDB(application: Application): UsersContactListsDB {
+    fun provideUsersContactListsDB(application: Application): UsersContactListsDB {
         return Room.databaseBuilder(application, UsersContactListsDB::class.java, "usersContactLists.db").build()
     }
 
