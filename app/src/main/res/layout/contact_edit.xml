@@ -19,7 +19,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.45">
+            app:layout_constraintVertical_bias="0.55">
 
             <TableRow
                 android:id="@+id/contactEditName"
@@ -36,10 +36,10 @@
                     android:textColor="@android:color/black" />
 
                 <EditText
-                    android:hint="@string/contact_name_hint"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="10"
+                    android:hint="@string/contact_name_hint"
                     android:importantForAutofill="no"
                     android:inputType="textPersonName"
                     android:text="@={contact.contactViewName}" />
@@ -60,10 +60,10 @@
                     android:textColor="#000000" />
 
                 <EditText
-                    android:hint="@string/contact_phone_hint"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="10"
+                    android:hint="@string/contact_phone_hint"
                     android:importantForAutofill="no"
                     android:inputType="phone"
                     android:text="@={contact.contactViewPhone}" />
@@ -84,10 +84,10 @@
                     android:textColor="#000000" />
 
                 <EditText
-                    android:hint="@string/contact_email_hint"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="10"
+                    android:hint="@string/contact_email_hint"
                     android:importantForAutofill="no"
                     android:inputType="textEmailAddress"
                     android:text="@={contact.contactViewEmail}" />
@@ -107,10 +107,10 @@
                     android:textColor="#000000" />
 
                 <EditText
-                    android:hint="@string/contact_address_hint"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="10"
+                    android:hint="@string/contact_address_hint"
                     android:imeOptions="actionDone"
                     android:importantForAutofill="no"
                     android:inputType="text"
