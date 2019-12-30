@@ -12,10 +12,18 @@
         tools:layout="@layout/contact_list" >
         <action
             android:id="@+id/action_create"
-            app:destination="@id/contactCreationFragment" />
+            app:destination="@id/contactCreationFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <action
             android:id="@+id/action_view"
-            app:destination="@id/viewContactFragment" />
+            app:destination="@id/viewContactFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
 
     <fragment
@@ -26,6 +34,10 @@
         <action
             android:id="@+id/action_create_back"
             app:destination="@id/contactListFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
             app:popUpTo="@+id/contactListFragment"
             app:popUpToInclusive="true" />
     </fragment>
@@ -37,10 +49,18 @@
         tools:layout="@layout/view_contact">
         <action
             android:id="@+id/action_delete"
-            app:destination="@id/contactDeletionFragment" />
+            app:destination="@id/contactDeletionFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <action
             android:id="@+id/action_edit"
-            app:destination="@id/contactEditFragment" />
+            app:destination="@id/contactEditFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
 
     <dialog
@@ -51,6 +71,10 @@
         <action
             android:id="@+id/action_delete_back"
             app:destination="@id/contactListFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
             app:popUpTo="@+id/contactListFragment"
             app:popUpToInclusive="true" />
     </dialog>
@@ -62,6 +86,10 @@
         <action
             android:id="@+id/action_edit_back"
             app:destination="@id/contactListFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
             app:popUpTo="@+id/contactListFragment"
             app:popUpToInclusive="true" />
     </fragment>

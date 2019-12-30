@@ -8,6 +8,7 @@
     </data>
 
     <TableLayout
+        android:animateLayoutChanges="true"
         android:layout_width="250dp"
         android:layout_height="100dp"
         android:id="@+id/confirmDeletionAlertDialog"
