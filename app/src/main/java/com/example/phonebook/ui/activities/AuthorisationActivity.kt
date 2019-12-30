@@ -5,6 +5,7 @@ import android.os.Bundle
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.ActivityNavigator
 
 import com.example.phonebook.R
 import com.example.phonebook.utils.ComponentProvider
@@ -33,6 +34,11 @@ class AuthorisationActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         ComponentProvider.getInstance().removeAuthComponent()
+    }
+
+    override fun finish() {
+        super.finish()
+        ActivityNavigator.applyPopAnimationsToPendingTransition(this)
     }
 }
 
